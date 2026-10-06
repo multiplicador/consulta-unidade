@@ -29,9 +29,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
+            background: var(--bg); color: var(--text); min-height: 100vh;
         }
 
         /* ===== HEADER ===== */
@@ -71,10 +69,9 @@
             cursor: pointer; transition: all 0.2s;
         }
         .btn-logout:hover { background: #cc0000; }
-
         .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
 
-        /* ===== LOADING ===== */
+        /* ===== LOADING / ERROR ===== */
         .loading { text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 16px; }
         .loading .spinner {
             display: inline-block; width: 44px; height: 44px;
@@ -84,25 +81,70 @@
         @keyframes spin { to { transform: rotate(360deg); } }
         .error-msg { text-align: center; padding: 40px 20px; color: var(--accent); font-size: 15px; }
 
-        /* ===== TELA LICENCIADO — BUSCA ===== */
-        .search-hero {
-            text-align: center;
-            padding: 60px 20px 40px;
+        /* ===== PREMISSAS CARD ===== */
+        .premissas-card {
+            background: var(--card-bg); border-radius: 20px; padding: 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid var(--border);
+            margin-bottom: 32px; overflow: hidden;
         }
-        .search-hero h2 {
-            font-size: 28px; color: var(--primary); margin-bottom: 8px;
+        .premissas-header {
+            background: linear-gradient(135deg, var(--ademicon-vinho), var(--primary-light));
+            color: white; padding: 24px 32px;
         }
-        .search-hero p {
-            font-size: 15px; color: var(--text-muted); margin-bottom: 32px;
+        .premissas-header h2 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+        .premissas-header p { font-size: 13px; opacity: 0.9; }
+        .premissas-body { padding: 28px 32px; }
+
+        .requisito-box {
+            background: #FAFAFA; border-radius: 14px; padding: 22px 24px;
+            margin-bottom: 18px; border-left: 4px solid var(--ademicon-vinho);
         }
-        .search-box {
-            max-width: 550px; margin: 0 auto; position: relative;
+        .requisito-box:last-of-type { margin-bottom: 0; }
+        .requisito-title {
+            font-size: 15px; font-weight: 700; color: var(--ademicon-vinho);
+            margin-bottom: 10px; display: flex; align-items: center; gap: 8px;
         }
+        .requisito-subtitle {
+            font-size: 13px; font-weight: 600; color: var(--text-light);
+            margin-bottom: 6px; margin-top: 2px;
+        }
+        .requisito-list {
+            list-style: none; padding: 0; margin: 0;
+        }
+        .requisito-list li {
+            font-size: 13px; color: var(--text-light); line-height: 1.7;
+            padding: 4px 0 4px 24px; position: relative;
+        }
+        .requisito-list li::before {
+            content: '✓'; position: absolute; left: 0; top: 4px;
+            color: var(--ademicon-vinho); font-weight: 700; font-size: 14px;
+        }
+        .avaliacao-box {
+            background: #FFF8F0; border: 2px solid var(--ademicon-vermelho-medio);
+            border-radius: 12px; padding: 16px 20px; margin-top: 20px;
+            display: flex; align-items: flex-start; gap: 12px;
+        }
+        .avaliacao-box .icon-alert { font-size: 22px; flex-shrink: 0; }
+        .avaliacao-box p { font-size: 13px; color: var(--text); line-height: 1.6; }
+        .avaliacao-box strong { color: var(--ademicon-vermelho-medio); }
+
+        /* ===== SEARCH SECTION ===== */
+        .search-section {
+            background: var(--card-bg); border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid var(--border);
+            padding: 32px; text-align: center; margin-bottom: 24px;
+        }
+        .search-section h2 {
+            font-size: 22px; color: var(--primary); margin-bottom: 6px;
+        }
+        .search-section > p {
+            font-size: 14px; color: var(--text-muted); margin-bottom: 24px;
+        }
+        .search-box { max-width: 550px; margin: 0 auto; position: relative; }
         .search-box select {
             width: 100%; padding: 16px 20px; border: 2px solid var(--border);
             border-radius: 14px; font-size: 16px; background: white; color: var(--text);
-            cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
-            appearance: none;
+            cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237A1315' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat; background-position: right 18px center;
         }
@@ -111,9 +153,9 @@
             box-shadow: 0 0 0 3px rgba(208,48,37,0.15);
         }
 
-        /* ===== CARD RESULTADO DO LICENCIADO ===== */
+        /* ===== RESULT CARD ===== */
         .result-card {
-            max-width: 700px; margin: 30px auto 0; background: var(--card-bg);
+            max-width: 700px; margin: 0 auto; background: var(--card-bg);
             border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
             border: 1px solid var(--border); overflow: hidden;
         }
@@ -134,13 +176,13 @@
             font-weight: 700; color: var(--text-muted); min-width: 140px;
         }
         .result-value {
-            font-size: 15px; color: var(--text); text-align: right; flex: 1;
-            font-weight: 500;
+            font-size: 15px; color: var(--text); text-align: right; flex: 1; font-weight: 500;
         }
-        .result-value.multiplicador-name { color: var(--ademicon-vinho); font-weight: 700; }
-        .result-value.sem-mult { color: #999; font-style: italic; }
+        .result-status-detail {
+            font-size: 12px; color: var(--text-muted); margin-top: 4px; font-weight: 400;
+        }
 
-        /* ===== ADMIN PANEL — LOGIN ===== */
+        /* ===== ADMIN LOGIN ===== */
         .admin-login-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.5); z-index: 200;
@@ -160,8 +202,7 @@
         .admin-login-box p { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
         .admin-login-box input {
             width: 100%; padding: 14px 18px; border: 2px solid var(--border);
-            border-radius: 10px; font-size: 15px; margin-bottom: 12px;
-            transition: border-color 0.2s;
+            border-radius: 10px; font-size: 15px; margin-bottom: 12px; transition: border-color 0.2s;
         }
         .admin-login-box input:focus { outline: none; border-color: var(--accent); }
         .admin-login-box .btn-login {
@@ -177,7 +218,7 @@
         .admin-login-box .btn-cancel:hover { color: var(--text); }
         .login-error { color: var(--ademicon-vermelho); font-size: 13px; margin-bottom: 12px; display: none; }
 
-        /* ===== ADMIN — FILTROS + TABELA ===== */
+        /* ===== ADMIN FILTERS + TABLE ===== */
         .filter-section {
             background: var(--card-bg); border-radius: 16px; padding: 28px 32px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 24px;
@@ -185,7 +226,7 @@
         }
         .filter-section h2 { font-size: 16px; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
         .filter-row { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
-        .filter-group { flex: 1; min-width: 250px; }
+        .filter-group { flex: 1; min-width: 220px; }
         .filter-group label {
             display: block; font-size: 12px; font-weight: 700; color: var(--text-light);
             margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
@@ -205,7 +246,6 @@
         }
         .btn-clear:hover { background: var(--bg); border-color: var(--primary); }
 
-        /* ===== STAT CARDS ===== */
         .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 24px; }
         .stat-card {
             background: var(--card-bg); border-radius: 14px; padding: 22px;
@@ -226,7 +266,6 @@
         .stat-card.novo::before { background: var(--warning); }
         .stat-card.novo .stat-number { color: var(--warning); }
 
-        /* ===== TABLE ===== */
         .results-section {
             background: var(--card-bg); border-radius: 16px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid var(--border); overflow: hidden;
@@ -247,7 +286,7 @@
         }
         tbody tr { transition: background 0.15s; }
         tbody tr:hover { background: #FDF5F5; }
-        tbody td { padding: 14px 18px; font-size: 14px; border-bottom: 1px solid #F0F0F0; vertical-align: top; color: var(--text); }
+        tbody td { padding: 14px 18px; font-size: 14px; border-bottom: 1px solid #F0F0F0; vertical-align: top; }
         .badge {
             display: inline-block; padding: 5px 14px; border-radius: 20px; font-size: 11px;
             font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap;
@@ -263,13 +302,11 @@
         .empty-state h3 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
         .empty-state p { font-size: 14px; }
 
-        /* ===== FOOTER ===== */
         .footer {
             text-align: center; padding: 30px 20px; font-size: 12px; line-height: 1.8;
             color: var(--ademicon-branco); background: var(--ademicon-preto); margin-top: 40px;
         }
         .footer strong { color: var(--ademicon-vermelho-medio); }
-
         .hidden { display: none !important; }
 
         @media (max-width: 900px) { .stats-row { grid-template-columns: repeat(2,1fr); } }
@@ -279,7 +316,9 @@
             .filter-group { min-width: 100%; }
             .container { padding: 16px 12px; }
             thead th, tbody td { padding: 10px 12px; font-size: 13px; }
-            .search-hero h2 { font-size: 22px; }
+            .premissas-body { padding: 20px 18px; }
+            .requisito-box { padding: 16px 18px; }
+            .search-section { padding: 24px 18px; }
             .result-row { flex-direction: column; gap: 4px; }
             .result-value { text-align: left; }
         }
@@ -298,7 +337,7 @@
                 <div class="logo-icon">A</div>
                 <div class="header-title">
                     <h1>ADEMICON — Avaliação 360°</h1>
-                    <p>Consulta de Multiplicadores por Unidade</p>
+                    <p>Treinamento e Desenvolvimento — Multiplicadores</p>
                 </div>
             </div>
             <div class="header-right">
@@ -323,13 +362,54 @@
             <p>Verifique se o arquivo <strong>dados.json</strong> está na mesma pasta.</p>
         </div>
 
-        <!-- ========================================== -->
-        <!-- TELA DO LICENCIADO (padrão)               -->
-        <!-- ========================================== -->
+        <!-- ================================================ -->
+        <!-- TELA DO LICENCIADO                                -->
+        <!-- ================================================ -->
         <div id="licenciadoView" class="hidden">
-            <div class="search-hero">
+
+            <!-- PREMISSAS -->
+            <div class="premissas-card">
+                <div class="premissas-header">
+                    <h2>📋 Premissas 360° — Treinamento e Desenvolvimento — Multiplicadores</h2>
+                    <p>Confira abaixo os critérios que sua unidade deve cumprir para atingir a pontuação neste item.</p>
+                </div>
+                <div class="premissas-body">
+
+                    <div class="requisito-box">
+                        <div class="requisito-title">📌 Requisito 1: Engajamento</div>
+                        <div class="requisito-subtitle">Obrigatoriedade de cumprir todos os 3 itens abaixo:</div>
+                        <ul class="requisito-list">
+                            <li>Participação em ao menos <strong>4 encontros virtuais anuais</strong> no formato de treinamento Help Desk específico de multiplicadores, dentro da plataforma Bumerangue.</li>
+                            <li>Comprovação de ao menos <strong>1 treinamento por bimestre</strong> na unidade/loja aplicado pelo multiplicador, comprovado por avaliação de reação, lista de presença e fotos dentro da plataforma Bumerangue.</li>
+                            <li><strong>100% de participação nos 6 cursos obrigatórios</strong> na Bumerangue, específicos para multiplicadores, liberados a cada início de bimestre.</li>
+                        </ul>
+                    </div>
+
+                    <div class="requisito-box">
+                        <div class="requisito-title">📌 Requisito 2: Quantidade</div>
+                        <div class="requisito-subtitle">Toda loja (exceto novas) deverá ter:</div>
+                        <ul class="requisito-list">
+                            <li>Ao menos <strong>1 multiplicador</strong>, devendo esse ser obrigatoriamente Administrativo. Lojas novas (abertura com menos de 12 meses) têm formação opcional.</li>
+                            <li>Lojas com <strong>mais de 80 consultores</strong> (inclui prévias e matrículas) no fechamento de cada trimestre deverão contar com <strong>2 multiplicadores obrigatoriamente</strong>.</li>
+                            <li>As formações ocorrem no fim de cada trimestre. Se a loja atingir o número limite de consultores após o encerramento das inscrições da próxima turma, <strong>não será penalizada</strong>, porém precisará enviar obrigatoriamente um administrativo na próxima turma.</li>
+                        </ul>
+                    </div>
+
+                    <div class="avaliacao-box">
+                        <div class="icon-alert">⚠️</div>
+                        <p>
+                            <strong>A avaliação é binária (atingido ou não):</strong> é necessário atender
+                            <strong>ambos os requisitos</strong> (Engajamento + Quantidade) para o atingimento
+                            dos <strong>5 pontos</strong> na Avaliação 360°.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BUSCA -->
+            <div class="search-section">
                 <h2>🔍 Consulte sua Unidade</h2>
-                <p>Selecione o nome da sua unidade para verificar o status da Avaliação 360° e o multiplicador designado.</p>
+                <p>Selecione o nome da sua unidade para verificar o status no critério Multiplicadores.</p>
                 <div class="search-box">
                     <select id="searchUnidade">
                         <option value="">Selecione sua unidade...</option>
@@ -337,7 +417,7 @@
                 </div>
             </div>
 
-            <!-- Card de resultado individual -->
+            <!-- Card resultado -->
             <div id="resultCard" class="result-card hidden">
                 <div class="result-card-header">
                     <h3 id="rcUnidade">—</h3>
@@ -345,7 +425,11 @@
                 </div>
                 <div class="result-card-body">
                     <div class="result-row">
-                        <div class="result-label">Status Avaliação 360°</div>
+                        <div class="result-label">Critério</div>
+                        <div class="result-value" style="font-size:13px;color:#6D6E70;">Treinamento e Desenvolvimento — Multiplicadores</div>
+                    </div>
+                    <div class="result-row">
+                        <div class="result-label">Status</div>
                         <div class="result-value" id="rcStatus">—</div>
                     </div>
                     <div class="result-row">
@@ -360,12 +444,10 @@
             </div>
         </div>
 
-        <!-- ========================================== -->
-        <!-- TELA DO ADMINISTRADOR (após login)         -->
-        <!-- ========================================== -->
+        <!-- ================================================ -->
+        <!-- TELA DO ADMINISTRADOR                             -->
+        <!-- ================================================ -->
         <div id="adminView" class="hidden">
-
-            <!-- Filtros -->
             <div class="filter-section">
                 <h2>🔍 Painel do Administrador — Visão Geral</h2>
                 <div class="filter-row">
@@ -374,7 +456,7 @@
                         <select id="filterBU"><option value="">Todas as BUs</option></select>
                     </div>
                     <div class="filter-group">
-                        <label>Nome da Unidade</label>
+                        <label>Unidade</label>
                         <select id="filterUnidade"><option value="">Todas as unidades</option></select>
                     </div>
                     <div class="filter-group">
@@ -389,51 +471,24 @@
                     <button class="btn-clear" id="btnClear">✕ Limpar</button>
                 </div>
             </div>
-
-            <!-- Stats -->
             <div class="stats-row">
-                <div class="stat-card total">
-                    <div class="stat-number" id="statTotal">0</div>
-                    <div class="stat-label">Total de Unidades</div>
-                </div>
-                <div class="stat-card aprovado">
-                    <div class="stat-number" id="statAprovado">0</div>
-                    <div class="stat-label">✅ Atingiram (Sim)</div>
-                </div>
-                <div class="stat-card reprovado">
-                    <div class="stat-number" id="statReprovado">0</div>
-                    <div class="stat-label">❌ Não Atingiram</div>
-                </div>
-                <div class="stat-card novo">
-                    <div class="stat-number" id="statMenos12">0</div>
-                    <div class="stat-label">⏳ Menos de 12 Meses</div>
-                </div>
+                <div class="stat-card total"><div class="stat-number" id="statTotal">0</div><div class="stat-label">Total de Unidades</div></div>
+                <div class="stat-card aprovado"><div class="stat-number" id="statAprovado">0</div><div class="stat-label">✅ Atingiram (Sim)</div></div>
+                <div class="stat-card reprovado"><div class="stat-number" id="statReprovado">0</div><div class="stat-label">❌ Não Atingiram</div></div>
+                <div class="stat-card novo"><div class="stat-number" id="statMenos12">0</div><div class="stat-label">⏳ Menos de 12 Meses</div></div>
             </div>
-
-            <!-- Tabela -->
             <div class="results-section">
                 <div class="results-header">
-                    <h3>📋 Todas as Unidades</h3>
+                    <h3>📋 Todas as Unidades — Multiplicadores</h3>
                     <span class="results-count" id="resultsCount">0 registros</span>
                 </div>
                 <div class="table-wrapper">
                     <table>
-                        <thead>
-                            <tr>
-                                <th>Unidade</th>
-                                <th>Código</th>
-                                <th>BU</th>
-                                <th>Status 360°</th>
-                                <th>Multiplicador(es)</th>
-                                <th>Observação</th>
-                            </tr>
-                        </thead>
+                        <thead><tr><th>Unidade</th><th>Código</th><th>BU</th><th>Status 360°</th><th>Multiplicador(es)</th><th>Observação</th></tr></thead>
                         <tbody id="tableBody"></tbody>
                     </table>
                     <div class="empty-state hidden" id="emptyState">
-                        <div class="icon">🔎</div>
-                        <h3>Nenhum resultado encontrado</h3>
-                        <p>Tente ajustar os filtros.</p>
+                        <div class="icon">🔎</div><h3>Nenhum resultado encontrado</h3><p>Tente ajustar os filtros.</p>
                     </div>
                 </div>
             </div>
@@ -456,21 +511,15 @@
 
     <!-- FOOTER -->
     <div class="footer">
-        <p><strong>Ademicon</strong> — Sistema de Consulta de Multiplicadores | Avaliação 360°</p>
+        <p><strong>Ademicon</strong> — Avaliação 360° | Treinamento e Desenvolvimento — Multiplicadores</p>
         <p>3º Trimestre de 2026 · Dados atualizados em Outubro/2026</p>
     </div>
 
 <script>
-/* ============================================
-   CONFIGURAÇÃO — Altere a senha aqui
-   ============================================ */
 var ADMIN_PASSWORD = "ademicon360";
-
-/* ============================================ */
 var DATA = [];
 var isAdmin = false;
 
-// 1. CARREGAR DADOS
 fetch("dados.json")
     .then(function(r){ if(!r.ok) throw new Error("Erro"); return r.json(); })
     .then(function(json){
@@ -483,7 +532,6 @@ fetch("dados.json")
         document.getElementById("errorState").classList.remove("hidden");
     });
 
-// 2. TELA DO LICENCIADO
 function showLicenciadoView(){
     document.getElementById("licenciadoView").classList.remove("hidden");
     document.getElementById("adminView").classList.add("hidden");
@@ -494,58 +542,54 @@ function showLicenciadoView(){
 function populateSearchUnidade(){
     var sel = document.getElementById("searchUnidade");
     sel.innerHTML = '<option value="">Selecione sua unidade...</option>';
-    var unidades = [];
-    DATA.forEach(function(d){ if(unidades.indexOf(d.unidade)===-1) unidades.push(d.unidade); });
-    unidades.sort();
-    unidades.forEach(function(u){
-        var o = document.createElement("option"); o.value = u; o.textContent = u;
-        sel.appendChild(o);
-    });
+    var u = [];
+    DATA.forEach(function(d){ if(u.indexOf(d.unidade)===-1) u.push(d.unidade); });
+    u.sort();
+    u.forEach(function(n){ var o=document.createElement("option"); o.value=n; o.textContent=n; sel.appendChild(o); });
 }
 
 function showUnitResult(){
     var val = document.getElementById("searchUnidade").value;
     var card = document.getElementById("resultCard");
     if(!val){ card.classList.add("hidden"); return; }
-
     var item = null;
     for(var i=0;i<DATA.length;i++){ if(DATA[i].unidade===val){ item=DATA[i]; break; } }
     if(!item){ card.classList.add("hidden"); return; }
 
     document.getElementById("rcUnidade").textContent = item.unidade;
     document.getElementById("rcCodBU").textContent = "Código: " + item.codigo + (item.bu ? " · " + item.bu : "");
-    document.getElementById("rcStatus").innerHTML = getStatusBadge(item.status);
+
+    var statusHtml = getStatusBadge(item.status);
+    if(item.status === "sim"){
+        statusHtml += '<div class="result-status-detail">Requisitos de Engajamento e Quantidade atendidos — 5 pontos</div>';
+    } else if(item.status === "não"){
+        statusHtml += '<div class="result-status-detail">Um ou mais requisitos não foram atendidos — 0 pontos</div>';
+    } else if(item.status === "menos 12 meses"){
+        statusHtml += '<div class="result-status-detail">Loja com menos de 12 meses — formação opcional</div>';
+    }
+    document.getElementById("rcStatus").innerHTML = statusHtml;
 
     if(/SEM MULTIPLICADOR/i.test(item.multiplicador)){
         document.getElementById("rcMult").innerHTML = '<span style="color:#999;font-style:italic;">Sem multiplicador designado</span>';
     } else {
         document.getElementById("rcMult").innerHTML = '<strong style="color:#7A1315;">' + escapeHtml(item.multiplicador) + '</strong>';
     }
-
     document.getElementById("rcObs").textContent = item.observacao || "—";
     card.classList.remove("hidden");
 }
 
-// 3. ADMIN LOGIN
+// ADMIN
 function showAdminLogin(){
     document.getElementById("adminLoginOverlay").classList.remove("hidden");
     document.getElementById("adminPassword").value = "";
     document.getElementById("loginError").style.display = "none";
     document.getElementById("adminPassword").focus();
 }
-function hideAdminLogin(){
-    document.getElementById("adminLoginOverlay").classList.remove("hidden");
-    document.getElementById("adminLoginOverlay").classList.add("hidden");
-}
+function hideAdminLogin(){ document.getElementById("adminLoginOverlay").classList.add("hidden"); }
 function doAdminLogin(){
-    var pwd = document.getElementById("adminPassword").value;
-    if(pwd === ADMIN_PASSWORD){
-        isAdmin = true;
-        hideAdminLogin();
-        enterAdminMode();
-    } else {
-        document.getElementById("loginError").style.display = "block";
-    }
+    if(document.getElementById("adminPassword").value === ADMIN_PASSWORD){
+        isAdmin = true; hideAdminLogin(); enterAdminMode();
+    } else { document.getElementById("loginError").style.display = "block"; }
 }
 function logoutAdmin(){
     isAdmin = false;
@@ -554,8 +598,6 @@ function logoutAdmin(){
     document.getElementById("btnLogout").classList.add("hidden");
     document.getElementById("btnAdminToggle").classList.remove("hidden");
 }
-
-// 4. ADMIN MODE
 function enterAdminMode(){
     document.getElementById("licenciadoView").classList.add("hidden");
     document.getElementById("adminView").classList.remove("hidden");
@@ -564,15 +606,12 @@ function enterAdminMode(){
     initAdmin();
 }
 function initAdmin(){
-    populateBUFilter();
-    populateUnidadeFilter(DATA);
-    renderAdminAll(DATA);
+    populateBUFilter(); populateUnidadeFilter(DATA); renderAdminAll(DATA);
     document.getElementById("filterBU").addEventListener("change", adminFilterByBU);
     document.getElementById("filterUnidade").addEventListener("change", adminFilterResults);
     document.getElementById("filterStatus").addEventListener("change", adminFilterResults);
     document.getElementById("btnClear").addEventListener("click", adminClearFilters);
 }
-
 function populateBUFilter(){
     var bus=[], sel=document.getElementById("filterBU");
     sel.innerHTML='<option value="">Todas as BUs</option>';
@@ -592,10 +631,8 @@ function adminFilterByBU(){
     document.getElementById("filterUnidade").value="";
     document.getElementById("filterStatus").value="";
     var bu=document.getElementById("filterBU").value;
-    var f=DATA;
-    if(bu) f=DATA.filter(function(d){return d.bu===bu;});
-    populateUnidadeFilter(f);
-    renderAdminAll(f);
+    var f=bu?DATA.filter(function(d){return d.bu===bu;}):DATA;
+    populateUnidadeFilter(f); renderAdminAll(f);
 }
 function adminFilterResults(){
     var bu=document.getElementById("filterBU").value;
@@ -611,11 +648,8 @@ function adminClearFilters(){
     document.getElementById("filterBU").value="";
     document.getElementById("filterUnidade").value="";
     document.getElementById("filterStatus").value="";
-    populateUnidadeFilter(DATA);
-    renderAdminAll(DATA);
+    populateUnidadeFilter(DATA); renderAdminAll(DATA);
 }
-
-// 5. RENDER ADMIN
 function renderAdminAll(ds){
     document.getElementById("statTotal").textContent=ds.length;
     document.getElementById("statAprovado").textContent=ds.filter(function(d){return d.status==="sim";}).length;
@@ -630,22 +664,11 @@ function renderTable(ds){
     ct.textContent=ds.length+" registro"+(ds.length!==1?"s":"");
     var h="";
     ds.forEach(function(d){
-        var m=/SEM MULTIPLICADOR/i.test(d.multiplicador)
-            ? '<span style="color:#999;font-style:italic;">Sem multiplicador</span>'
-            : '<strong style="color:#231F20;">'+escapeHtml(d.multiplicador)+'</strong>';
-        h+='<tr>'+
-            '<td><span class="unidade-name">'+escapeHtml(d.unidade)+'</span></td>'+
-            '<td>'+escapeHtml(d.codigo)+'</td>'+
-            '<td>'+(d.bu?'<span class="bu-tag">'+escapeHtml(d.bu)+'</span>':'—')+'</td>'+
-            '<td>'+getStatusBadge(d.status)+'</td>'+
-            '<td>'+m+'</td>'+
-            '<td class="obs-text">'+(d.observacao?escapeHtml(d.observacao):'—')+'</td>'+
-        '</tr>';
+        var m=/SEM MULTIPLICADOR/i.test(d.multiplicador)?'<span style="color:#999;font-style:italic;">Sem multiplicador</span>':'<strong style="color:#231F20;">'+escapeHtml(d.multiplicador)+'</strong>';
+        h+='<tr><td><span class="unidade-name">'+escapeHtml(d.unidade)+'</span></td><td>'+escapeHtml(d.codigo)+'</td><td>'+(d.bu?'<span class="bu-tag">'+escapeHtml(d.bu)+'</span>':'—')+'</td><td>'+getStatusBadge(d.status)+'</td><td>'+m+'</td><td class="obs-text">'+(d.observacao?escapeHtml(d.observacao):'—')+'</td></tr>';
     });
     tb.innerHTML=h;
 }
-
-// 6. HELPERS
 function getStatusBadge(s){
     if(s==="sim") return '<span class="badge badge-sim">✅ Atingiu</span>';
     if(s==="não") return '<span class="badge badge-nao">❌ Não Atingiu</span>';
