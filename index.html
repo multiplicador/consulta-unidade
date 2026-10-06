@@ -31,8 +31,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: var(--bg); color: var(--text); min-height: 100vh;
         }
-
-        /* ===== HEADER ===== */
         .header {
             background: linear-gradient(135deg, var(--ademicon-vinho) 0%, var(--ademicon-vermelho-medio) 100%);
             color: var(--ademicon-branco);
@@ -70,8 +68,6 @@
         }
         .btn-logout:hover { background: #cc0000; }
         .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
-
-        /* ===== LOADING / ERROR ===== */
         .loading { text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 16px; }
         .loading .spinner {
             display: inline-block; width: 44px; height: 44px;
@@ -81,11 +77,10 @@
         @keyframes spin { to { transform: rotate(360deg); } }
         .error-msg { text-align: center; padding: 40px 20px; color: var(--accent); font-size: 15px; }
 
-        /* ===== PREMISSAS CARD ===== */
         .premissas-card {
             background: var(--card-bg); border-radius: 20px; padding: 0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid var(--border);
-            margin-bottom: 32px; overflow: hidden;
+            margin-top: 32px; overflow: hidden;
         }
         .premissas-header {
             background: linear-gradient(135deg, var(--ademicon-vinho), var(--primary-light));
@@ -94,7 +89,6 @@
         .premissas-header h2 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
         .premissas-header p { font-size: 13px; opacity: 0.9; }
         .premissas-body { padding: 28px 32px; }
-
         .requisito-box {
             background: #FAFAFA; border-radius: 14px; padding: 22px 24px;
             margin-bottom: 18px; border-left: 4px solid var(--ademicon-vinho);
@@ -108,9 +102,7 @@
             font-size: 13px; font-weight: 600; color: var(--text-light);
             margin-bottom: 6px; margin-top: 2px;
         }
-        .requisito-list {
-            list-style: none; padding: 0; margin: 0;
-        }
+        .requisito-list { list-style: none; padding: 0; margin: 0; }
         .requisito-list li {
             font-size: 13px; color: var(--text-light); line-height: 1.7;
             padding: 4px 0 4px 24px; position: relative;
@@ -128,18 +120,13 @@
         .avaliacao-box p { font-size: 13px; color: var(--text); line-height: 1.6; }
         .avaliacao-box strong { color: var(--ademicon-vermelho-medio); }
 
-        /* ===== SEARCH SECTION ===== */
         .search-section {
             background: var(--card-bg); border-radius: 20px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid var(--border);
             padding: 32px; text-align: center; margin-bottom: 24px;
         }
-        .search-section h2 {
-            font-size: 22px; color: var(--primary); margin-bottom: 6px;
-        }
-        .search-section > p {
-            font-size: 14px; color: var(--text-muted); margin-bottom: 24px;
-        }
+        .search-section h2 { font-size: 22px; color: var(--primary); margin-bottom: 6px; }
+        .search-section > p { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
         .search-box { max-width: 550px; margin: 0 auto; position: relative; }
         .search-box select {
             width: 100%; padding: 16px 20px; border: 2px solid var(--border);
@@ -153,7 +140,6 @@
             box-shadow: 0 0 0 3px rgba(208,48,37,0.15);
         }
 
-        /* ===== RESULT CARD ===== */
         .result-card {
             max-width: 700px; margin: 0 auto; background: var(--card-bg);
             border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
@@ -182,7 +168,6 @@
             font-size: 12px; color: var(--text-muted); margin-top: 4px; font-weight: 400;
         }
 
-        /* ===== ADMIN LOGIN ===== */
         .admin-login-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.5); z-index: 200;
@@ -218,7 +203,6 @@
         .admin-login-box .btn-cancel:hover { color: var(--text); }
         .login-error { color: var(--ademicon-vermelho); font-size: 13px; margin-bottom: 12px; display: none; }
 
-        /* ===== ADMIN FILTERS + TABLE ===== */
         .filter-section {
             background: var(--card-bg); border-radius: 16px; padding: 28px 32px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 24px;
@@ -245,7 +229,6 @@
             font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap;
         }
         .btn-clear:hover { background: var(--bg); border-color: var(--primary); }
-
         .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 24px; }
         .stat-card {
             background: var(--card-bg); border-radius: 14px; padding: 22px;
@@ -265,7 +248,6 @@
         .stat-card.reprovado .stat-number { color: var(--ademicon-vermelho); }
         .stat-card.novo::before { background: var(--warning); }
         .stat-card.novo .stat-number { color: var(--warning); }
-
         .results-section {
             background: var(--card-bg); border-radius: 16px;
             box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid var(--border); overflow: hidden;
@@ -301,14 +283,12 @@
         .empty-state .icon { font-size: 52px; margin-bottom: 16px; }
         .empty-state h3 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
         .empty-state p { font-size: 14px; }
-
         .footer {
             text-align: center; padding: 30px 20px; font-size: 12px; line-height: 1.8;
             color: var(--ademicon-branco); background: var(--ademicon-preto); margin-top: 40px;
         }
         .footer strong { color: var(--ademicon-vermelho-medio); }
         .hidden { display: none !important; }
-
         @media (max-width: 900px) { .stats-row { grid-template-columns: repeat(2,1fr); } }
         @media (max-width: 768px) {
             .header-top { flex-direction: column; gap: 12px; padding: 16px 20px; text-align: center; }
@@ -367,46 +347,7 @@
         <!-- ================================================ -->
         <div id="licenciadoView" class="hidden">
 
-            <!-- PREMISSAS -->
-            <div class="premissas-card">
-                <div class="premissas-header">
-                    <h2>📋 Premissas 360° — Treinamento e Desenvolvimento — Multiplicadores</h2>
-                    <p>Confira abaixo os critérios que sua unidade deve cumprir para atingir a pontuação neste item.</p>
-                </div>
-                <div class="premissas-body">
-
-                    <div class="requisito-box">
-                        <div class="requisito-title">📌 Requisito 1: Engajamento</div>
-                        <div class="requisito-subtitle">Obrigatoriedade de cumprir todos os 3 itens abaixo:</div>
-                        <ul class="requisito-list">
-                            <li>Participação em ao menos <strong>4 encontros virtuais anuais</strong> no formato de treinamento Help Desk específico de multiplicadores, dentro da plataforma Bumerangue.</li>
-                            <li>Comprovação de ao menos <strong>1 treinamento por bimestre</strong> na unidade/loja aplicado pelo multiplicador, comprovado por avaliação de reação, lista de presença e fotos dentro da plataforma Bumerangue.</li>
-                            <li><strong>100% de participação nos 6 cursos obrigatórios</strong> na Bumerangue, específicos para multiplicadores, liberados a cada início de bimestre.</li>
-                        </ul>
-                    </div>
-
-                    <div class="requisito-box">
-                        <div class="requisito-title">📌 Requisito 2: Quantidade</div>
-                        <div class="requisito-subtitle">Toda loja (exceto novas) deverá ter:</div>
-                        <ul class="requisito-list">
-                            <li>Ao menos <strong>1 multiplicador</strong>, devendo esse ser obrigatoriamente Administrativo. Lojas novas (abertura com menos de 12 meses) têm formação opcional.</li>
-                            <li>Lojas com <strong>mais de 80 consultores</strong> (inclui prévias e matrículas) no fechamento de cada trimestre deverão contar com <strong>2 multiplicadores obrigatoriamente</strong>.</li>
-                            <li>As formações ocorrem no fim de cada trimestre. Se a loja atingir o número limite de consultores após o encerramento das inscrições da próxima turma, <strong>não será penalizada</strong>, porém precisará enviar obrigatoriamente um administrativo na próxima turma.</li>
-                        </ul>
-                    </div>
-
-                    <div class="avaliacao-box">
-                        <div class="icon-alert">⚠️</div>
-                        <p>
-                            <strong>A avaliação é binária (atingido ou não):</strong> é necessário atender
-                            <strong>ambos os requisitos</strong> (Engajamento + Quantidade) para o atingimento
-                            dos <strong>5 pontos</strong> na Avaliação 360°.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BUSCA -->
+            <!-- 1. BUSCA (primeiro) -->
             <div class="search-section">
                 <h2>🔍 Consulte sua Unidade</h2>
                 <p>Selecione o nome da sua unidade para verificar o status no critério Multiplicadores.</p>
@@ -417,7 +358,7 @@
                 </div>
             </div>
 
-            <!-- Card resultado -->
+            <!-- 2. CARD RESULTADO -->
             <div id="resultCard" class="result-card hidden">
                 <div class="result-card-header">
                     <h3 id="rcUnidade">—</h3>
@@ -442,6 +383,43 @@
                     </div>
                 </div>
             </div>
+
+            <!-- 3. PREMISSAS (abaixo de tudo) -->
+            <div class="premissas-card">
+                <div class="premissas-header">
+                    <h2>📋 Premissas 360° — Treinamento e Desenvolvimento — Multiplicadores</h2>
+                    <p>Confira abaixo os critérios que sua unidade deve cumprir para atingir a pontuação neste item.</p>
+                </div>
+                <div class="premissas-body">
+                    <div class="requisito-box">
+                        <div class="requisito-title">📌 Requisito 1: Engajamento</div>
+                        <div class="requisito-subtitle">Obrigatoriedade de cumprir todos os 3 itens abaixo:</div>
+                        <ul class="requisito-list">
+                            <li>Participação em ao menos <strong>4 encontros virtuais anuais</strong> no formato de treinamento Help Desk específico de multiplicadores, dentro da plataforma Bumerangue.</li>
+                            <li>Comprovação de ao menos <strong>1 treinamento por bimestre</strong> na unidade/loja aplicado pelo multiplicador, comprovado por avaliação de reação, lista de presença e fotos dentro da plataforma Bumerangue.</li>
+                            <li><strong>100% de participação nos 6 cursos obrigatórios</strong> na Bumerangue, específicos para multiplicadores, liberados a cada início de bimestre.</li>
+                        </ul>
+                    </div>
+                    <div class="requisito-box">
+                        <div class="requisito-title">📌 Requisito 2: Quantidade</div>
+                        <div class="requisito-subtitle">Toda loja (exceto novas) deverá ter:</div>
+                        <ul class="requisito-list">
+                            <li>Ao menos <strong>1 multiplicador</strong>, devendo esse ser obrigatoriamente Administrativo. Lojas novas (abertura com menos de 12 meses) têm formação opcional.</li>
+                            <li>Lojas com <strong>mais de 80 consultores</strong> (inclui prévias e matrículas) no fechamento de cada trimestre deverão contar com <strong>2 multiplicadores obrigatoriamente</strong>.</li>
+                            <li>As formações ocorrem no fim de cada trimestre. Se a loja atingir o número limite de consultores após o encerramento das inscrições da próxima turma, <strong>não será penalizada</strong>, porém precisará enviar obrigatoriamente um administrativo na próxima turma.</li>
+                        </ul>
+                    </div>
+                    <div class="avaliacao-box">
+                        <div class="icon-alert">⚠️</div>
+                        <p>
+                            <strong>A avaliação é binária (atingido ou não):</strong> é necessário atender
+                            <strong>ambos os requisitos</strong> (Engajamento + Quantidade) para o atingimento
+                            dos <strong>5 pontos</strong> na Avaliação 360°.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- ================================================ -->
@@ -578,7 +556,6 @@ function showUnitResult(){
     card.classList.remove("hidden");
 }
 
-// ADMIN
 function showAdminLogin(){
     document.getElementById("adminLoginOverlay").classList.remove("hidden");
     document.getElementById("adminPassword").value = "";
