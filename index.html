@@ -77,6 +77,82 @@
         @keyframes spin { to { transform: rotate(360deg); } }
         .error-msg { text-align: center; padding: 40px 20px; color: var(--accent); font-size: 15px; }
 
+        /* ===== SEARCH SECTION ===== */
+        .search-section {
+            background: var(--card-bg); border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid var(--border);
+            padding: 40px 32px; text-align: center; margin-bottom: 24px;
+        }
+        .search-section h2 { font-size: 22px; color: var(--primary); margin-bottom: 6px; }
+        .search-section > p { font-size: 14px; color: var(--text-muted); margin-bottom: 28px; }
+        .search-input-row {
+            max-width: 500px; margin: 0 auto; display: flex; gap: 12px;
+        }
+        .search-input-row input {
+            flex: 1; padding: 16px 20px; border: 2px solid var(--border);
+            border-radius: 14px; font-size: 16px; text-transform: uppercase;
+            letter-spacing: 1px; font-weight: 600; color: var(--text);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .search-input-row input:focus {
+            outline: none; border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(208,48,37,0.15);
+        }
+        .search-input-row input::placeholder {
+            text-transform: none; font-weight: 400; letter-spacing: 0; color: #AAA;
+        }
+        .btn-search {
+            padding: 16px 28px; background: var(--primary); color: white;
+            border: none; border-radius: 14px; font-size: 15px; font-weight: 700;
+            cursor: pointer; transition: background 0.2s; white-space: nowrap;
+        }
+        .btn-search:hover { background: var(--accent); }
+        .search-hint {
+            font-size: 12px; color: var(--text-muted); margin-top: 12px;
+        }
+        .search-error {
+            margin-top: 16px; padding: 14px 20px; background: #FDEAEA;
+            border: 1px solid #F5C6C6; border-radius: 12px; color: var(--ademicon-vermelho-medio);
+            font-size: 14px; font-weight: 600; display: none;
+        }
+
+        /* ===== RESULT CARD ===== */
+        .result-card {
+            max-width: 700px; margin: 0 auto; background: var(--card-bg);
+            border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--border); overflow: hidden;
+        }
+        .result-card-header {
+            background: linear-gradient(135deg, var(--ademicon-vinho), var(--primary-light));
+            color: white; padding: 22px 28px;
+        }
+        .result-card-header h3 { font-size: 20px; font-weight: 700; }
+        .result-card-header span { font-size: 13px; opacity: 0.85; }
+        .result-card-body { padding: 28px; }
+        .result-row {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            padding: 16px 0; border-bottom: 1px solid #F0F0F0;
+        }
+        .result-row:last-child { border-bottom: none; }
+        .result-label {
+            font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+            font-weight: 700; color: var(--text-muted); min-width: 140px;
+        }
+        .result-value {
+            font-size: 15px; color: var(--text); text-align: right; flex: 1; font-weight: 500;
+        }
+        .result-status-detail {
+            font-size: 12px; color: var(--text-muted); margin-top: 4px; font-weight: 400;
+        }
+        .btn-new-search {
+            display: block; max-width: 700px; margin: 20px auto 0; padding: 14px;
+            background: transparent; color: var(--primary); border: 2px solid var(--border);
+            border-radius: 14px; font-size: 14px; font-weight: 600; cursor: pointer;
+            transition: all 0.2s; width: 100%; text-align: center;
+        }
+        .btn-new-search:hover { background: var(--bg); border-color: var(--primary); }
+
+        /* ===== PREMISSAS ===== */
         .premissas-card {
             background: var(--card-bg); border-radius: 20px; padding: 0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid var(--border);
@@ -120,54 +196,7 @@
         .avaliacao-box p { font-size: 13px; color: var(--text); line-height: 1.6; }
         .avaliacao-box strong { color: var(--ademicon-vermelho-medio); }
 
-        .search-section {
-            background: var(--card-bg); border-radius: 20px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid var(--border);
-            padding: 32px; text-align: center; margin-bottom: 24px;
-        }
-        .search-section h2 { font-size: 22px; color: var(--primary); margin-bottom: 6px; }
-        .search-section > p { font-size: 14px; color: var(--text-muted); margin-bottom: 24px; }
-        .search-box { max-width: 550px; margin: 0 auto; position: relative; }
-        .search-box select {
-            width: 100%; padding: 16px 20px; border: 2px solid var(--border);
-            border-radius: 14px; font-size: 16px; background: white; color: var(--text);
-            cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237A1315' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat; background-position: right 18px center;
-        }
-        .search-box select:focus {
-            outline: none; border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(208,48,37,0.15);
-        }
-
-        .result-card {
-            max-width: 700px; margin: 0 auto; background: var(--card-bg);
-            border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-            border: 1px solid var(--border); overflow: hidden;
-        }
-        .result-card-header {
-            background: linear-gradient(135deg, var(--ademicon-vinho), var(--primary-light));
-            color: white; padding: 22px 28px;
-        }
-        .result-card-header h3 { font-size: 20px; font-weight: 700; }
-        .result-card-header span { font-size: 13px; opacity: 0.85; }
-        .result-card-body { padding: 28px; }
-        .result-row {
-            display: flex; justify-content: space-between; align-items: flex-start;
-            padding: 16px 0; border-bottom: 1px solid #F0F0F0;
-        }
-        .result-row:last-child { border-bottom: none; }
-        .result-label {
-            font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
-            font-weight: 700; color: var(--text-muted); min-width: 140px;
-        }
-        .result-value {
-            font-size: 15px; color: var(--text); text-align: right; flex: 1; font-weight: 500;
-        }
-        .result-status-detail {
-            font-size: 12px; color: var(--text-muted); margin-top: 4px; font-weight: 400;
-        }
-
+        /* ===== ADMIN ===== */
         .admin-login-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.5); z-index: 200;
@@ -299,6 +328,7 @@
             .premissas-body { padding: 20px 18px; }
             .requisito-box { padding: 16px 18px; }
             .search-section { padding: 24px 18px; }
+            .search-input-row { flex-direction: column; }
             .result-row { flex-direction: column; gap: 4px; }
             .result-value { text-align: left; }
         }
@@ -347,14 +377,18 @@
         <!-- ================================================ -->
         <div id="licenciadoView" class="hidden">
 
-            <!-- 1. BUSCA (primeiro) -->
-            <div class="search-section">
+            <!-- 1. BUSCA POR CÓDIGO -->
+            <div class="search-section" id="searchSection">
                 <h2>🔍 Consulte sua Unidade</h2>
-                <p>Selecione o nome da sua unidade para verificar o status no critério Multiplicadores.</p>
-                <div class="search-box">
-                    <select id="searchUnidade">
-                        <option value="">Selecione sua unidade...</option>
-                    </select>
+                <p>Digite o código da sua unidade para verificar o status no critério Multiplicadores.</p>
+                <div class="search-input-row">
+                    <input type="text" id="inputCodigo" placeholder="Ex: E00012" maxlength="10"
+                           onkeydown="if(event.key==='Enter')searchByCodigo()">
+                    <button class="btn-search" onclick="searchByCodigo()">Consultar</button>
+                </div>
+                <div class="search-hint">O código da unidade é fornecido pela Ademicon (ex: E00012, P00013, D00093)</div>
+                <div class="search-error" id="searchError">
+                    ❌ Código não encontrado. Verifique se digitou corretamente.
                 </div>
             </div>
 
@@ -383,8 +417,9 @@
                     </div>
                 </div>
             </div>
+            <button class="btn-new-search hidden" id="btnNewSearch" onclick="resetSearch()">← Consultar outra unidade</button>
 
-            <!-- 3. PREMISSAS (abaixo de tudo) -->
+            <!-- 3. PREMISSAS -->
             <div class="premissas-card">
                 <div class="premissas-header">
                     <h2>📋 Premissas 360° — Treinamento e Desenvolvimento — Multiplicadores</h2>
@@ -513,26 +548,32 @@ fetch("dados.json")
 function showLicenciadoView(){
     document.getElementById("licenciadoView").classList.remove("hidden");
     document.getElementById("adminView").classList.add("hidden");
-    populateSearchUnidade();
-    document.getElementById("searchUnidade").addEventListener("change", showUnitResult);
 }
 
-function populateSearchUnidade(){
-    var sel = document.getElementById("searchUnidade");
-    sel.innerHTML = '<option value="">Selecione sua unidade...</option>';
-    var u = [];
-    DATA.forEach(function(d){ if(u.indexOf(d.unidade)===-1) u.push(d.unidade); });
-    u.sort();
-    u.forEach(function(n){ var o=document.createElement("option"); o.value=n; o.textContent=n; sel.appendChild(o); });
-}
+/* ===== LICENCIADO — BUSCA POR CÓDIGO ===== */
+function searchByCodigo(){
+    var raw = document.getElementById("inputCodigo").value.trim().toUpperCase();
+    var errEl = document.getElementById("searchError");
+    var cardEl = document.getElementById("resultCard");
+    var btnNew = document.getElementById("btnNewSearch");
 
-function showUnitResult(){
-    var val = document.getElementById("searchUnidade").value;
-    var card = document.getElementById("resultCard");
-    if(!val){ card.classList.add("hidden"); return; }
+    errEl.style.display = "none";
+    cardEl.classList.add("hidden");
+    btnNew.classList.add("hidden");
+
+    if(!raw){ return; }
+
     var item = null;
-    for(var i=0;i<DATA.length;i++){ if(DATA[i].unidade===val){ item=DATA[i]; break; } }
-    if(!item){ card.classList.add("hidden"); return; }
+    for(var i = 0; i < DATA.length; i++){
+        if(DATA[i].codigo.toUpperCase() === raw){
+            item = DATA[i]; break;
+        }
+    }
+
+    if(!item){
+        errEl.style.display = "block";
+        return;
+    }
 
     document.getElementById("rcUnidade").textContent = item.unidade;
     document.getElementById("rcCodBU").textContent = "Código: " + item.codigo + (item.bu ? " · " + item.bu : "");
@@ -553,9 +594,22 @@ function showUnitResult(){
         document.getElementById("rcMult").innerHTML = '<strong style="color:#7A1315;">' + escapeHtml(item.multiplicador) + '</strong>';
     }
     document.getElementById("rcObs").textContent = item.observacao || "—";
-    card.classList.remove("hidden");
+
+    cardEl.classList.remove("hidden");
+    btnNew.classList.remove("hidden");
+    cardEl.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+function resetSearch(){
+    document.getElementById("inputCodigo").value = "";
+    document.getElementById("searchError").style.display = "none";
+    document.getElementById("resultCard").classList.add("hidden");
+    document.getElementById("btnNewSearch").classList.add("hidden");
+    document.getElementById("searchSection").scrollIntoView({ behavior: "smooth", block: "start" });
+    document.getElementById("inputCodigo").focus();
+}
+
+/* ===== ADMIN ===== */
 function showAdminLogin(){
     document.getElementById("adminLoginOverlay").classList.remove("hidden");
     document.getElementById("adminPassword").value = "";
@@ -574,6 +628,7 @@ function logoutAdmin(){
     document.getElementById("licenciadoView").classList.remove("hidden");
     document.getElementById("btnLogout").classList.add("hidden");
     document.getElementById("btnAdminToggle").classList.remove("hidden");
+    resetSearch();
 }
 function enterAdminMode(){
     document.getElementById("licenciadoView").classList.add("hidden");
