@@ -7,17 +7,30 @@
     <title>Ademicon - Consulta de Multiplicadores | Avaliação 360°</title>
     <style>
         :root {
-            --primary: #1B3A5C;
-            --primary-light: #2A5A8C;
-            --accent: #E8A838;
-            --success: #2E7D32;
-            --danger: #C62828;
-            --warning: #F9A825;
-            --bg: #F4F6F9;
+            /* ===== PALETA ADEMICON ===== */
+            --ademicon-branco: #FFFFFF;
+            --ademicon-preto: #231F20;
+            --ademicon-cinza-escuro: #414042;
+            --ademicon-cinza-claro: #DCDDDE;
+            --ademicon-vermelho: #FF0000;
+            --ademicon-vermelho-medio: #D03025;
+            --ademicon-vinho: #7A1315;
+
+            /* ===== VARIÁVEIS DE USO ===== */
+            --primary: #7A1315;
+            --primary-dark: #5A0E10;
+            --primary-light: #9B1A1D;
+            --accent: #D03025;
+            --accent-hover: #B5281E;
+            --vermelho: #FF0000;
+            --bg: #F5F4F4;
             --card-bg: #FFFFFF;
-            --text: #333333;
-            --text-light: #666666;
-            --border: #E0E0E0;
+            --text: #231F20;
+            --text-light: #414042;
+            --text-muted: #6D6E70;
+            --border: #DCDDDE;
+            --success: #2E7D32;
+            --warning: #E6A817;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,10 +42,11 @@
             min-height: 100vh;
         }
 
+        /* ===== HEADER ===== */
         .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
-            color: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background: linear-gradient(135deg, var(--ademicon-vinho) 0%, var(--ademicon-vermelho-medio) 100%);
+            color: var(--ademicon-branco);
+            box-shadow: 0 4px 16px rgba(122, 19, 21, 0.3);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -50,40 +64,42 @@
         .logo-area { display: flex; align-items: center; gap: 16px; }
 
         .logo-icon {
-            width: 50px; height: 50px;
-            background: var(--accent);
+            width: 52px; height: 52px;
+            background: var(--ademicon-branco);
             border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 26px; font-weight: 800;
-            color: var(--primary);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-size: 28px; font-weight: 800;
+            color: var(--ademicon-vinho);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
 
         .header-title h1 { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; }
-        .header-title p { font-size: 13px; opacity: 0.85; margin-top: 2px; }
+        .header-title p { font-size: 13px; opacity: 0.9; margin-top: 2px; }
 
         .header-badge {
-            background: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.18);
             padding: 8px 20px;
             border-radius: 20px;
             font-size: 13px;
             font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.25);
+            border: 1px solid rgba(255,255,255,0.3);
+            backdrop-filter: blur(4px);
         }
 
+        /* ===== CONTAINER ===== */
         .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
 
-        /* LOADING */
+        /* ===== LOADING ===== */
         .loading {
             text-align: center;
             padding: 60px 20px;
-            color: var(--text-light);
+            color: var(--text-muted);
             font-size: 16px;
         }
 
         .loading .spinner {
             display: inline-block;
-            width: 40px; height: 40px;
+            width: 44px; height: 44px;
             border: 4px solid var(--border);
             border-top-color: var(--accent);
             border-radius: 50%;
@@ -96,11 +112,11 @@
         .error-msg {
             text-align: center;
             padding: 40px 20px;
-            color: var(--danger);
+            color: var(--accent);
             font-size: 15px;
         }
 
-        /* FILTROS */
+        /* ===== FILTROS ===== */
         .filter-section {
             background: var(--card-bg);
             border-radius: 16px;
@@ -108,6 +124,7 @@
             box-shadow: 0 2px 12px rgba(0,0,0,0.06);
             margin-bottom: 24px;
             border: 1px solid var(--border);
+            border-top: 4px solid var(--primary);
         }
 
         .filter-section h2 {
@@ -147,7 +164,7 @@
             cursor: pointer;
             transition: border-color 0.2s, box-shadow 0.2s;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237A1315' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 14px center;
         }
@@ -155,7 +172,7 @@
         .filter-group select:focus {
             outline: none;
             border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(232,168,56,0.2);
+            box-shadow: 0 0 0 3px rgba(208, 48, 37, 0.15);
         }
 
         .btn-clear {
@@ -173,7 +190,7 @@
 
         .btn-clear:hover { background: var(--bg); border-color: var(--primary); }
 
-        /* STATS */
+        /* ===== STAT CARDS ===== */
         .stats-row {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -189,6 +206,15 @@
             border: 1px solid var(--border);
             text-align: center;
             transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
         }
 
         .stat-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
@@ -203,18 +229,25 @@
 
         .stat-label {
             font-size: 11px;
-            color: var(--text-light);
+            color: var(--text-muted);
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 600;
         }
 
-        .stat-card.total .stat-number { color: var(--primary); }
+        .stat-card.total::before { background: var(--ademicon-vinho); }
+        .stat-card.total .stat-number { color: var(--ademicon-vinho); }
+
+        .stat-card.aprovado::before { background: var(--success); }
         .stat-card.aprovado .stat-number { color: var(--success); }
-        .stat-card.reprovado .stat-number { color: var(--danger); }
+
+        .stat-card.reprovado::before { background: var(--ademicon-vermelho); }
+        .stat-card.reprovado .stat-number { color: var(--ademicon-vermelho); }
+
+        .stat-card.novo::before { background: var(--warning); }
         .stat-card.novo .stat-number { color: var(--warning); }
 
-        /* TABELA */
+        /* ===== RESULTS TABLE ===== */
         .results-section {
             background: var(--card-bg);
             border-radius: 16px;
@@ -225,18 +258,20 @@
 
         .results-header {
             padding: 20px 28px;
-            border-bottom: 1px solid var(--border);
+            border-bottom: 2px solid var(--border);
             display: flex;
             justify-content: space-between;
             align-items: center;
+            background: linear-gradient(135deg, var(--ademicon-vinho), var(--primary-light));
+            color: white;
         }
 
-        .results-header h3 { font-size: 16px; color: var(--primary); }
+        .results-header h3 { font-size: 16px; color: white; font-weight: 600; }
 
         .results-count {
             font-size: 13px;
-            color: var(--text-light);
-            background: var(--bg);
+            color: white;
+            background: rgba(255,255,255,0.2);
             padding: 5px 16px;
             border-radius: 20px;
             font-weight: 600;
@@ -247,25 +282,26 @@
         table { width: 100%; border-collapse: collapse; }
 
         thead th {
-            background: #F0F3F7;
+            background: #F7F2F2;
             padding: 14px 18px;
             text-align: left;
             font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            color: var(--text-light);
+            color: var(--ademicon-vinho);
             border-bottom: 2px solid var(--border);
         }
 
         tbody tr { transition: background 0.15s; }
-        tbody tr:hover { background: #F8FAFC; }
+        tbody tr:hover { background: #FDF5F5; }
 
         tbody td {
             padding: 14px 18px;
             font-size: 14px;
             border-bottom: 1px solid #F0F0F0;
             vertical-align: top;
+            color: var(--text);
         }
 
         .badge {
@@ -280,47 +316,57 @@
         }
 
         .badge-sim { background: #E8F5E9; color: #2E7D32; }
-        .badge-nao { background: #FFEBEE; color: #C62828; }
-        .badge-menos12 { background: #FFF8E1; color: #F57F17; }
+        .badge-nao { background: #FDEAEA; color: var(--ademicon-vermelho-medio); }
+        .badge-menos12 { background: #FFF8E1; color: #BF8C00; }
 
         .bu-tag {
             display: inline-block;
-            padding: 3px 10px;
+            padding: 4px 12px;
             border-radius: 6px;
             font-size: 11px;
             font-weight: 700;
-            background: var(--primary);
+            background: var(--ademicon-vinho);
             color: white;
+            letter-spacing: 0.3px;
         }
 
         .obs-text {
             font-size: 12px;
-            color: var(--text-light);
+            color: var(--text-muted);
             max-width: 280px;
             line-height: 1.5;
         }
 
-        .multiplicador-name { font-weight: 600; color: var(--primary); }
+        .multiplicador-name { font-weight: 600; color: var(--ademicon-preto); }
         .sem-mult { color: #999; font-style: italic; font-weight: 400; }
 
+        .unidade-name { font-weight: 700; color: var(--ademicon-vinho); }
+
+        /* ===== EMPTY STATE ===== */
         .empty-state {
             text-align: center;
             padding: 60px 20px;
-            color: var(--text-light);
+            color: var(--text-muted);
         }
 
         .empty-state .icon { font-size: 52px; margin-bottom: 16px; }
         .empty-state h3 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
         .empty-state p { font-size: 14px; }
 
+        /* ===== FOOTER ===== */
         .footer {
             text-align: center;
             padding: 30px 20px;
-            color: var(--text-light);
             font-size: 12px;
             line-height: 1.8;
+            color: var(--ademicon-branco);
+            background: var(--ademicon-preto);
+            margin-top: 40px;
         }
 
+        .footer strong { color: var(--ademicon-vermelho-medio); }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 900px) {
             .stats-row { grid-template-columns: repeat(2, 1fr); }
         }
@@ -374,7 +420,7 @@
             <p>Verifique se o arquivo <strong>dados.json</strong> está na mesma pasta que este arquivo.</p>
         </div>
 
-        <!-- APP CONTENT (hidden until data loads) -->
+        <!-- APP CONTENT -->
         <div id="appContent" style="display:none;">
 
             <!-- FILTROS -->
@@ -448,20 +494,15 @@
 
     </div>
 
+    <!-- FOOTER -->
     <div class="footer">
         <p><strong>Ademicon</strong> — Sistema de Consulta de Multiplicadores | Avaliação 360°</p>
         <p>3º Trimestre de 2026 · Dados atualizados em Outubro/2026</p>
     </div>
 
 <script>
-// ====================================================
-// Variável global que armazena os dados do dados.json
-// ====================================================
 var DATA = [];
 
-// ====================================================
-// 1. CARREGAR O ARQUIVO dados.json
-// ====================================================
 fetch("dados.json")
     .then(function(response) {
         if (!response.ok) throw new Error("Arquivo não encontrado");
@@ -479,23 +520,15 @@ fetch("dados.json")
         console.error("Erro ao carregar dados.json:", err);
     });
 
-// ====================================================
-// 2. INICIALIZAR A APLICAÇÃO
-// ====================================================
 function initApp() {
     populateBUFilter();
     populateUnidadeFilter(DATA);
     renderAll(DATA);
-
-    // Event listeners
     document.getElementById("filterBU").addEventListener("change", filterByBU);
     document.getElementById("filterUnidade").addEventListener("change", filterResults);
     document.getElementById("btnClear").addEventListener("click", clearFilters);
 }
 
-// ====================================================
-// 3. FILTROS
-// ====================================================
 function populateBUFilter() {
     var bus = [];
     DATA.forEach(function(d) {
@@ -552,9 +585,6 @@ function clearFilters() {
     renderAll(DATA);
 }
 
-// ====================================================
-// 4. RENDERIZAÇÃO
-// ====================================================
 function renderAll(dataset) {
     updateStats(dataset);
     renderTable(dataset);
@@ -602,7 +632,7 @@ function renderTable(dataset) {
             : '<span class="multiplicador-name">' + escapeHtml(d.multiplicador) + '</span>';
 
         html += '<tr>' +
-            '<td><strong>' + escapeHtml(d.unidade) + '</strong></td>' +
+            '<td><span class="unidade-name">' + escapeHtml(d.unidade) + '</span></td>' +
             '<td>' + escapeHtml(d.codigo) + '</td>' +
             '<td>' + (d.bu ? '<span class="bu-tag">' + escapeHtml(d.bu) + '</span>' : '—') + '</td>' +
             '<td>' + getStatusBadge(d.status) + '</td>' +
@@ -615,4 +645,5 @@ function renderTable(dataset) {
 </script>
 
 </body>
-</html>​
+</html>
+
