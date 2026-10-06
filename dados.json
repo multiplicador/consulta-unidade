@@ -177,7 +177,7 @@
   {"unidade":"MARINGA CARLOS BORGES - PR","codigo":"E0124","status":"não","multiplicador":"SEM MULTIPLICADOR","observacao":"VALIDADO 02.10","bu":"BU3"},
   {"unidade":"MARINGA CENTRO - PR","codigo":"E00202","status":"sim","multiplicador":"CAROLINE CORRÊA INGLÊZ","observacao":"validado em 05/10","bu":"BU3"},
   {"unidade":"MARINGA RIACHUELO - PR","codigo":"E00223","status":"menos 12 meses","multiplicador":"SEM MULTIPLICADOR","observacao":"VALIDADO 02.10","bu":"BU3"},
-  {"unidade":"MARINGA TEIXEIRA MENDES - PR","codigo":"E0149","status":"não","multiplicador":"JAINE REGINA DE OLIVEIRA; JEANE STEFANE ALVES DE LIMA CARVALHO","observacao":"validado em 05/10 - Jeane não aplicou o treinamento","bu":"BU3"},
+  {"unidade":"MARINGA TEIXEIRA MENDES - PR","codigo":"E0149","status":"sim","multiplicador":"JAINE REGINA DE OLIVEIRA; JEANE STEFANE ALVES DE LIMA CARVALHO","observacao":"validado em 05/10 - Jeane está de licença maternidade","bu":"BU3"},
   {"unidade":"MATINHOS - PR","codigo":"E00145","status":"não","multiplicador":"SEM MULTIPLICADOR","observacao":"VALIDADO 02.10","bu":"BU1"},
   {"unidade":"MEDIANEIRA - PR","codigo":"E00140","status":"não","multiplicador":"KETLIN CRISTIANE STEMPINHAKI","observacao":"validado em 05/10 - não cumpriram nenhum dos critérios","bu":"BU3"},
   {"unidade":"MERCES - PR","codigo":"E00026","status":"não","multiplicador":"PAOLA CAROLINE ROCHA SANTIAGO","observacao":"validado em 05/10 - Não aplicou treinamento e não fez a uca","bu":"BU1"},
