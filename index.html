@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -6,7 +7,6 @@
     <title>Ademicon - Consulta de Multiplicadores | Avaliação 360°</title>
     <style>
         :root {
-            /* ===== PALETA ADEMICON ===== */
             --ademicon-branco: #FFFFFF;
             --ademicon-preto: #231F20;
             --ademicon-cinza-escuro: #414042;
@@ -14,14 +14,9 @@
             --ademicon-vermelho: #FF0000;
             --ademicon-vermelho-medio: #D03025;
             --ademicon-vinho: #7A1315;
-
-            /* ===== VARIÁVEIS DE USO ===== */
             --primary: #7A1315;
-            --primary-dark: #5A0E10;
             --primary-light: #9B1A1D;
             --accent: #D03025;
-            --accent-hover: #B5281E;
-            --vermelho: #FF0000;
             --bg: #F5F4F4;
             --card-bg: #FFFFFF;
             --text: #231F20;
@@ -31,9 +26,7 @@
             --success: #2E7D32;
             --warning: #E6A817;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: var(--bg);
@@ -45,344 +38,251 @@
         .header {
             background: linear-gradient(135deg, var(--ademicon-vinho) 0%, var(--ademicon-vermelho-medio) 100%);
             color: var(--ademicon-branco);
-            box-shadow: 0 4px 16px rgba(122, 19, 21, 0.3);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            box-shadow: 0 4px 16px rgba(122,19,21,0.3);
+            position: sticky; top: 0; z-index: 100;
         }
-
         .header-top {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 18px 40px;
-            max-width: 1280px;
-            margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 18px 40px; max-width: 1280px; margin: 0 auto;
         }
-
         .logo-area { display: flex; align-items: center; gap: 16px; }
-
         .logo-icon {
-            width: 52px; height: 52px;
-            background: var(--ademicon-branco);
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 28px; font-weight: 800;
-            color: var(--ademicon-vinho);
+            width: 52px; height: 52px; background: var(--ademicon-branco);
+            border-radius: 12px; display: flex; align-items: center; justify-content: center;
+            font-size: 28px; font-weight: 800; color: var(--ademicon-vinho);
             box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
-
         .header-title h1 { font-size: 22px; font-weight: 700; letter-spacing: 0.5px; }
         .header-title p { font-size: 13px; opacity: 0.9; margin-top: 2px; }
-
+        .header-right { display: flex; align-items: center; gap: 12px; }
         .header-badge {
-            background: rgba(255,255,255,0.18);
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 13px;
-            font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.3);
-            backdrop-filter: blur(4px);
+            background: rgba(255,255,255,0.18); padding: 8px 20px; border-radius: 20px;
+            font-size: 13px; font-weight: 600; border: 1px solid rgba(255,255,255,0.3);
         }
+        .btn-admin-toggle {
+            background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.4);
+            padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .btn-admin-toggle:hover { background: rgba(255,255,255,0.35); }
+        .btn-logout {
+            background: var(--ademicon-vermelho); color: white; border: none;
+            padding: 8px 16px; border-radius: 20px; font-size: 13px; font-weight: 600;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .btn-logout:hover { background: #cc0000; }
 
-        /* ===== CONTAINER ===== */
         .container { max-width: 1200px; margin: 0 auto; padding: 30px 20px; }
 
         /* ===== LOADING ===== */
-        .loading {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-muted);
-            font-size: 16px;
-        }
-
+        .loading { text-align: center; padding: 60px 20px; color: var(--text-muted); font-size: 16px; }
         .loading .spinner {
-            display: inline-block;
-            width: 44px; height: 44px;
-            border: 4px solid var(--border);
-            border-top-color: var(--accent);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin-bottom: 16px;
+            display: inline-block; width: 44px; height: 44px;
+            border: 4px solid var(--border); border-top-color: var(--accent);
+            border-radius: 50%; animation: spin 0.8s linear infinite; margin-bottom: 16px;
         }
-
         @keyframes spin { to { transform: rotate(360deg); } }
+        .error-msg { text-align: center; padding: 40px 20px; color: var(--accent); font-size: 15px; }
 
-        .error-msg {
+        /* ===== TELA LICENCIADO — BUSCA ===== */
+        .search-hero {
             text-align: center;
-            padding: 40px 20px;
-            color: var(--accent);
-            font-size: 15px;
+            padding: 60px 20px 40px;
         }
-
-        /* ===== FILTROS ===== */
-        .filter-section {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 28px 32px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            margin-bottom: 24px;
-            border: 1px solid var(--border);
-            border-top: 4px solid var(--primary);
+        .search-hero h2 {
+            font-size: 28px; color: var(--primary); margin-bottom: 8px;
         }
-
-        .filter-section h2 {
-            font-size: 16px;
-            color: var(--primary);
-            margin-bottom: 16px;
-            display: flex; align-items: center; gap: 8px;
+        .search-hero p {
+            font-size: 15px; color: var(--text-muted); margin-bottom: 32px;
         }
-
-        .filter-row {
-            display: flex;
-            gap: 16px;
-            align-items: flex-end;
-            flex-wrap: wrap;
+        .search-box {
+            max-width: 550px; margin: 0 auto; position: relative;
         }
-
-        .filter-group { flex: 1; min-width: 250px; }
-
-        .filter-group label {
-            display: block;
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--text-light);
-            margin-bottom: 6px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .filter-group select {
-            width: 100%;
-            padding: 12px 40px 12px 16px;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            font-size: 15px;
-            background: white;
-            color: var(--text);
-            cursor: pointer;
-            transition: border-color 0.2s, box-shadow 0.2s;
+        .search-box select {
+            width: 100%; padding: 16px 20px; border: 2px solid var(--border);
+            border-radius: 14px; font-size: 16px; background: white; color: var(--text);
+            cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s;
             appearance: none;
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237A1315' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 14px center;
+            background-repeat: no-repeat; background-position: right 18px center;
+        }
+        .search-box select:focus {
+            outline: none; border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(208,48,37,0.15);
         }
 
-        .filter-group select:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(208, 48, 37, 0.15);
+        /* ===== CARD RESULTADO DO LICENCIADO ===== */
+        .result-card {
+            max-width: 700px; margin: 30px auto 0; background: var(--card-bg);
+            border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--border); overflow: hidden;
         }
+        .result-card-header {
+            background: linear-gradient(135deg, var(--ademicon-vinho), var(--primary-light));
+            color: white; padding: 22px 28px;
+        }
+        .result-card-header h3 { font-size: 20px; font-weight: 700; }
+        .result-card-header span { font-size: 13px; opacity: 0.85; }
+        .result-card-body { padding: 28px; }
+        .result-row {
+            display: flex; justify-content: space-between; align-items: flex-start;
+            padding: 16px 0; border-bottom: 1px solid #F0F0F0;
+        }
+        .result-row:last-child { border-bottom: none; }
+        .result-label {
+            font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+            font-weight: 700; color: var(--text-muted); min-width: 140px;
+        }
+        .result-value {
+            font-size: 15px; color: var(--text); text-align: right; flex: 1;
+            font-weight: 500;
+        }
+        .result-value.multiplicador-name { color: var(--ademicon-vinho); font-weight: 700; }
+        .result-value.sem-mult { color: #999; font-style: italic; }
 
+        /* ===== ADMIN PANEL — LOGIN ===== */
+        .admin-login-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5); z-index: 200;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .admin-login-box {
+            background: white; border-radius: 20px; padding: 40px;
+            width: 380px; max-width: 90vw; box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        .admin-login-box .icon {
+            width: 64px; height: 64px; background: var(--primary);
+            border-radius: 16px; display: flex; align-items: center; justify-content: center;
+            font-size: 30px; margin: 0 auto 20px; color: white;
+        }
+        .admin-login-box h3 { font-size: 20px; color: var(--text); margin-bottom: 6px; }
+        .admin-login-box p { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+        .admin-login-box input {
+            width: 100%; padding: 14px 18px; border: 2px solid var(--border);
+            border-radius: 10px; font-size: 15px; margin-bottom: 12px;
+            transition: border-color 0.2s;
+        }
+        .admin-login-box input:focus { outline: none; border-color: var(--accent); }
+        .admin-login-box .btn-login {
+            width: 100%; padding: 14px; background: var(--primary); color: white;
+            border: none; border-radius: 10px; font-size: 15px; font-weight: 700;
+            cursor: pointer; transition: background 0.2s;
+        }
+        .admin-login-box .btn-login:hover { background: var(--accent); }
+        .admin-login-box .btn-cancel {
+            width: 100%; padding: 12px; background: transparent; color: var(--text-muted);
+            border: none; font-size: 14px; cursor: pointer; margin-top: 8px;
+        }
+        .admin-login-box .btn-cancel:hover { color: var(--text); }
+        .login-error { color: var(--ademicon-vermelho); font-size: 13px; margin-bottom: 12px; display: none; }
+
+        /* ===== ADMIN — FILTROS + TABELA ===== */
+        .filter-section {
+            background: var(--card-bg); border-radius: 16px; padding: 28px 32px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06); margin-bottom: 24px;
+            border: 1px solid var(--border); border-top: 4px solid var(--primary);
+        }
+        .filter-section h2 { font-size: 16px; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .filter-row { display: flex; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+        .filter-group { flex: 1; min-width: 250px; }
+        .filter-group label {
+            display: block; font-size: 12px; font-weight: 700; color: var(--text-light);
+            margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .filter-group select {
+            width: 100%; padding: 12px 40px 12px 16px; border: 2px solid var(--border);
+            border-radius: 10px; font-size: 15px; background: white; color: var(--text);
+            cursor: pointer; transition: border-color 0.2s, box-shadow 0.2s; appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237A1315' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 14px center;
+        }
+        .filter-group select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(208,48,37,0.15); }
         .btn-clear {
-            padding: 12px 24px;
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            white-space: nowrap;
+            padding: 12px 24px; background: transparent; color: var(--primary);
+            border: 2px solid var(--border); border-radius: 10px; font-size: 14px;
+            font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap;
         }
-
         .btn-clear:hover { background: var(--bg); border-color: var(--primary); }
 
         /* ===== STAT CARDS ===== */
-        .stats-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
+        .stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; margin-bottom: 24px; }
         .stat-card {
-            background: var(--card-bg);
-            border-radius: 14px;
-            padding: 22px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-            position: relative;
-            overflow: hidden;
+            background: var(--card-bg); border-radius: 14px; padding: 22px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04); border: 1px solid var(--border);
+            text-align: center; transition: transform 0.2s, box-shadow 0.2s;
+            position: relative; overflow: hidden;
         }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 4px;
-        }
-
+        .stat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
         .stat-card:hover { transform: translateY(-3px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
-
-        .stat-number {
-            font-size: 36px;
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 6px;
-            font-family: 'Segoe UI', monospace;
-        }
-
-        .stat-label {
-            font-size: 11px;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-
+        .stat-number { font-size: 36px; font-weight: 800; line-height: 1; margin-bottom: 6px; }
+        .stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
         .stat-card.total::before { background: var(--ademicon-vinho); }
         .stat-card.total .stat-number { color: var(--ademicon-vinho); }
-
         .stat-card.aprovado::before { background: var(--success); }
         .stat-card.aprovado .stat-number { color: var(--success); }
-
         .stat-card.reprovado::before { background: var(--ademicon-vermelho); }
         .stat-card.reprovado .stat-number { color: var(--ademicon-vermelho); }
-
         .stat-card.novo::before { background: var(--warning); }
         .stat-card.novo .stat-number { color: var(--warning); }
 
-        /* ===== RESULTS TABLE ===== */
+        /* ===== TABLE ===== */
         .results-section {
-            background: var(--card-bg);
-            border-radius: 16px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            border: 1px solid var(--border);
-            overflow: hidden;
+            background: var(--card-bg); border-radius: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid var(--border); overflow: hidden;
         }
-
         .results-header {
-            padding: 20px 28px;
-            border-bottom: 2px solid var(--border);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: linear-gradient(135deg, var(--ademicon-vinho), var(--primary-light));
-            color: white;
+            padding: 20px 28px; border-bottom: 2px solid var(--border); display: flex;
+            justify-content: space-between; align-items: center;
+            background: linear-gradient(135deg, var(--ademicon-vinho), var(--primary-light)); color: white;
         }
-
         .results-header h3 { font-size: 16px; color: white; font-weight: 600; }
-
-        .results-count {
-            font-size: 13px;
-            color: white;
-            background: rgba(255,255,255,0.2);
-            padding: 5px 16px;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-
+        .results-count { font-size: 13px; color: white; background: rgba(255,255,255,0.2); padding: 5px 16px; border-radius: 20px; font-weight: 600; }
         .table-wrapper { overflow-x: auto; }
-
         table { width: 100%; border-collapse: collapse; }
-
         thead th {
-            background: #F7F2F2;
-            padding: 14px 18px;
-            text-align: left;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--ademicon-vinho);
-            border-bottom: 2px solid var(--border);
+            background: #F7F2F2; padding: 14px 18px; text-align: left; font-size: 11px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;
+            color: var(--ademicon-vinho); border-bottom: 2px solid var(--border);
         }
-
         tbody tr { transition: background 0.15s; }
         tbody tr:hover { background: #FDF5F5; }
-
-        tbody td {
-            padding: 14px 18px;
-            font-size: 14px;
-            border-bottom: 1px solid #F0F0F0;
-            vertical-align: top;
-            color: var(--text);
-        }
-
+        tbody td { padding: 14px 18px; font-size: 14px; border-bottom: 1px solid #F0F0F0; vertical-align: top; color: var(--text); }
         .badge {
-            display: inline-block;
-            padding: 5px 14px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            white-space: nowrap;
+            display: inline-block; padding: 5px 14px; border-radius: 20px; font-size: 11px;
+            font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; white-space: nowrap;
         }
-
         .badge-sim { background: #E8F5E9; color: #2E7D32; }
         .badge-nao { background: #FDEAEA; color: var(--ademicon-vermelho-medio); }
         .badge-menos12 { background: #FFF8E1; color: #BF8C00; }
-
-        .bu-tag {
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 11px;
-            font-weight: 700;
-            background: var(--ademicon-vinho);
-            color: white;
-            letter-spacing: 0.3px;
-        }
-
-        .obs-text {
-            font-size: 12px;
-            color: var(--text-muted);
-            max-width: 280px;
-            line-height: 1.5;
-        }
-
-        .multiplicador-name { font-weight: 600; color: var(--ademicon-preto); }
-        .sem-mult { color: #999; font-style: italic; font-weight: 400; }
-
+        .bu-tag { display: inline-block; padding: 4px 12px; border-radius: 6px; font-size: 11px; font-weight: 700; background: var(--ademicon-vinho); color: white; }
+        .obs-text { font-size: 12px; color: var(--text-muted); max-width: 280px; line-height: 1.5; }
         .unidade-name { font-weight: 700; color: var(--ademicon-vinho); }
-
-        /* ===== EMPTY STATE ===== */
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: var(--text-muted);
-        }
-
+        .empty-state { text-align: center; padding: 60px 20px; color: var(--text-muted); }
         .empty-state .icon { font-size: 52px; margin-bottom: 16px; }
         .empty-state h3 { font-size: 18px; margin-bottom: 8px; color: var(--text); }
         .empty-state p { font-size: 14px; }
 
         /* ===== FOOTER ===== */
         .footer {
-            text-align: center;
-            padding: 30px 20px;
-            font-size: 12px;
-            line-height: 1.8;
-            color: var(--ademicon-branco);
-            background: var(--ademicon-preto);
-            margin-top: 40px;
+            text-align: center; padding: 30px 20px; font-size: 12px; line-height: 1.8;
+            color: var(--ademicon-branco); background: var(--ademicon-preto); margin-top: 40px;
         }
-
         .footer strong { color: var(--ademicon-vermelho-medio); }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 900px) {
-            .stats-row { grid-template-columns: repeat(2, 1fr); }
-        }
+        .hidden { display: none !important; }
 
+        @media (max-width: 900px) { .stats-row { grid-template-columns: repeat(2,1fr); } }
         @media (max-width: 768px) {
-            .header-top {
-                flex-direction: column;
-                gap: 12px;
-                padding: 16px 20px;
-                text-align: center;
-            }
+            .header-top { flex-direction: column; gap: 12px; padding: 16px 20px; text-align: center; }
             .filter-row { flex-direction: column; }
             .filter-group { min-width: 100%; }
             .container { padding: 16px 12px; }
             thead th, tbody td { padding: 10px 12px; font-size: 13px; }
+            .search-hero h2 { font-size: 22px; }
+            .result-row { flex-direction: column; gap: 4px; }
+            .result-value { text-align: left; }
         }
-
         @media (max-width: 480px) {
             .stats-row { grid-template-columns: 1fr 1fr; gap: 10px; }
             .stat-number { font-size: 28px; }
@@ -401,48 +301,96 @@
                     <p>Consulta de Multiplicadores por Unidade</p>
                 </div>
             </div>
-            <div class="header-badge">📅 3º Trimestre 2026</div>
+            <div class="header-right">
+                <div class="header-badge">📅 3º Trimestre 2026</div>
+                <button class="btn-admin-toggle" id="btnAdminToggle" onclick="showAdminLogin()">🔒 Administrador</button>
+                <button class="btn-logout hidden" id="btnLogout" onclick="logoutAdmin()">Sair do Admin</button>
+            </div>
         </div>
     </div>
 
     <div class="container">
 
-        <!-- LOADING STATE -->
+        <!-- LOADING -->
         <div id="loadingState" class="loading">
             <div class="spinner"></div>
             <p>Carregando dados dos multiplicadores...</p>
         </div>
 
-        <!-- ERROR STATE -->
-        <div id="errorState" class="error-msg" style="display:none;">
+        <!-- ERROR -->
+        <div id="errorState" class="error-msg hidden">
             <p>❌ Erro ao carregar os dados.</p>
-            <p>Verifique se o arquivo <strong>dados.json</strong> está na mesma pasta que este arquivo.</p>
+            <p>Verifique se o arquivo <strong>dados.json</strong> está na mesma pasta.</p>
         </div>
 
-        <!-- APP CONTENT -->
-        <div id="appContent" style="display:none;">
+        <!-- ========================================== -->
+        <!-- TELA DO LICENCIADO (padrão)               -->
+        <!-- ========================================== -->
+        <div id="licenciadoView" class="hidden">
+            <div class="search-hero">
+                <h2>🔍 Consulte sua Unidade</h2>
+                <p>Selecione o nome da sua unidade para verificar o status da Avaliação 360° e o multiplicador designado.</p>
+                <div class="search-box">
+                    <select id="searchUnidade">
+                        <option value="">Selecione sua unidade...</option>
+                    </select>
+                </div>
+            </div>
 
-            <!-- FILTROS -->
+            <!-- Card de resultado individual -->
+            <div id="resultCard" class="result-card hidden">
+                <div class="result-card-header">
+                    <h3 id="rcUnidade">—</h3>
+                    <span id="rcCodBU">—</span>
+                </div>
+                <div class="result-card-body">
+                    <div class="result-row">
+                        <div class="result-label">Status Avaliação 360°</div>
+                        <div class="result-value" id="rcStatus">—</div>
+                    </div>
+                    <div class="result-row">
+                        <div class="result-label">Multiplicador(es)</div>
+                        <div class="result-value" id="rcMult">—</div>
+                    </div>
+                    <div class="result-row">
+                        <div class="result-label">Observação</div>
+                        <div class="result-value" id="rcObs">—</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- TELA DO ADMINISTRADOR (após login)         -->
+        <!-- ========================================== -->
+        <div id="adminView" class="hidden">
+
+            <!-- Filtros -->
             <div class="filter-section">
-                <h2>🔍 Filtrar Unidade</h2>
+                <h2>🔍 Painel do Administrador — Visão Geral</h2>
                 <div class="filter-row">
                     <div class="filter-group">
                         <label>Business Unit (BU)</label>
-                        <select id="filterBU">
-                            <option value="">Todas as BUs</option>
-                        </select>
+                        <select id="filterBU"><option value="">Todas as BUs</option></select>
                     </div>
                     <div class="filter-group">
                         <label>Nome da Unidade</label>
-                        <select id="filterUnidade">
-                            <option value="">Selecione uma unidade...</option>
+                        <select id="filterUnidade"><option value="">Todas as unidades</option></select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Status</label>
+                        <select id="filterStatus">
+                            <option value="">Todos os status</option>
+                            <option value="sim">✅ Atingiu (Sim)</option>
+                            <option value="não">❌ Não Atingiu</option>
+                            <option value="menos 12 meses">⏳ Menos de 12 meses</option>
                         </select>
                     </div>
                     <button class="btn-clear" id="btnClear">✕ Limpar</button>
                 </div>
             </div>
 
-            <!-- ESTATÍSTICAS -->
+            <!-- Stats -->
             <div class="stats-row">
                 <div class="stat-card total">
                     <div class="stat-number" id="statTotal">0</div>
@@ -462,10 +410,10 @@
                 </div>
             </div>
 
-            <!-- TABELA -->
+            <!-- Tabela -->
             <div class="results-section">
                 <div class="results-header">
-                    <h3>📋 Resultado da Consulta</h3>
+                    <h3>📋 Todas as Unidades</h3>
                     <span class="results-count" id="resultsCount">0 registros</span>
                 </div>
                 <div class="table-wrapper">
@@ -475,22 +423,35 @@
                                 <th>Unidade</th>
                                 <th>Código</th>
                                 <th>BU</th>
-                                <th>Status Avaliação 360°</th>
+                                <th>Status 360°</th>
                                 <th>Multiplicador(es)</th>
                                 <th>Observação</th>
                             </tr>
                         </thead>
                         <tbody id="tableBody"></tbody>
                     </table>
-                    <div class="empty-state" id="emptyState" style="display:none;">
+                    <div class="empty-state hidden" id="emptyState">
                         <div class="icon">🔎</div>
                         <h3>Nenhum resultado encontrado</h3>
-                        <p>Tente ajustar os filtros acima.</p>
+                        <p>Tente ajustar os filtros.</p>
                     </div>
                 </div>
             </div>
         </div>
 
+    </div>
+
+    <!-- LOGIN OVERLAY -->
+    <div id="adminLoginOverlay" class="admin-login-overlay hidden">
+        <div class="admin-login-box">
+            <div class="icon">🔒</div>
+            <h3>Acesso Administrador</h3>
+            <p>Digite a senha para acessar o painel completo.</p>
+            <div class="login-error" id="loginError">Senha incorreta. Tente novamente.</div>
+            <input type="password" id="adminPassword" placeholder="Senha" onkeydown="if(event.key==='Enter')doAdminLogin()">
+            <button class="btn-login" onclick="doAdminLogin()">Entrar</button>
+            <button class="btn-cancel" onclick="hideAdminLogin()">Cancelar</button>
+        </div>
     </div>
 
     <!-- FOOTER -->
@@ -500,147 +461,198 @@
     </div>
 
 <script>
+/* ============================================
+   CONFIGURAÇÃO — Altere a senha aqui
+   ============================================ */
+var ADMIN_PASSWORD = "ademicon360";
+
+/* ============================================ */
 var DATA = [];
+var isAdmin = false;
 
+// 1. CARREGAR DADOS
 fetch("dados.json")
-    .then(function(response) {
-        if (!response.ok) throw new Error("Arquivo não encontrado");
-        return response.json();
-    })
-    .then(function(json) {
+    .then(function(r){ if(!r.ok) throw new Error("Erro"); return r.json(); })
+    .then(function(json){
         DATA = json;
-        document.getElementById("loadingState").style.display = "none";
-        document.getElementById("appContent").style.display = "block";
-        initApp();
+        document.getElementById("loadingState").classList.add("hidden");
+        showLicenciadoView();
     })
-    .catch(function(err) {
-        document.getElementById("loadingState").style.display = "none";
-        document.getElementById("errorState").style.display = "block";
-        console.error("Erro ao carregar dados.json:", err);
+    .catch(function(){
+        document.getElementById("loadingState").classList.add("hidden");
+        document.getElementById("errorState").classList.remove("hidden");
     });
 
-function initApp() {
-    populateBUFilter();
-    populateUnidadeFilter(DATA);
-    renderAll(DATA);
-    document.getElementById("filterBU").addEventListener("change", filterByBU);
-    document.getElementById("filterUnidade").addEventListener("change", filterResults);
-    document.getElementById("btnClear").addEventListener("click", clearFilters);
+// 2. TELA DO LICENCIADO
+function showLicenciadoView(){
+    document.getElementById("licenciadoView").classList.remove("hidden");
+    document.getElementById("adminView").classList.add("hidden");
+    populateSearchUnidade();
+    document.getElementById("searchUnidade").addEventListener("change", showUnitResult);
 }
 
-function populateBUFilter() {
-    var bus = [];
-    DATA.forEach(function(d) {
-        if (d.bu && bus.indexOf(d.bu) === -1) bus.push(d.bu);
-    });
-    bus.sort();
-    var sel = document.getElementById("filterBU");
-    bus.forEach(function(bu) {
-        var opt = document.createElement("option");
-        opt.value = bu;
-        opt.textContent = bu;
-        sel.appendChild(opt);
-    });
-}
-
-function populateUnidadeFilter(dataset) {
-    var sel = document.getElementById("filterUnidade");
-    sel.innerHTML = '<option value="">Selecione uma unidade...</option>';
+function populateSearchUnidade(){
+    var sel = document.getElementById("searchUnidade");
+    sel.innerHTML = '<option value="">Selecione sua unidade...</option>';
     var unidades = [];
-    dataset.forEach(function(d) {
-        if (unidades.indexOf(d.unidade) === -1) unidades.push(d.unidade);
-    });
+    DATA.forEach(function(d){ if(unidades.indexOf(d.unidade)===-1) unidades.push(d.unidade); });
     unidades.sort();
-    unidades.forEach(function(u) {
-        var opt = document.createElement("option");
-        opt.value = u;
-        opt.textContent = u;
-        sel.appendChild(opt);
+    unidades.forEach(function(u){
+        var o = document.createElement("option"); o.value = u; o.textContent = u;
+        sel.appendChild(o);
     });
 }
 
-function filterByBU() {
-    var buVal = document.getElementById("filterBU").value;
-    document.getElementById("filterUnidade").value = "";
-    var filtered = DATA;
-    if (buVal) filtered = DATA.filter(function(d) { return d.bu === buVal; });
-    populateUnidadeFilter(filtered);
-    renderAll(filtered);
-}
+function showUnitResult(){
+    var val = document.getElementById("searchUnidade").value;
+    var card = document.getElementById("resultCard");
+    if(!val){ card.classList.add("hidden"); return; }
 
-function filterResults() {
-    var buVal = document.getElementById("filterBU").value;
-    var unidadeVal = document.getElementById("filterUnidade").value;
-    var filtered = DATA;
-    if (buVal) filtered = filtered.filter(function(d) { return d.bu === buVal; });
-    if (unidadeVal) filtered = filtered.filter(function(d) { return d.unidade === unidadeVal; });
-    renderAll(filtered);
-}
+    var item = null;
+    for(var i=0;i<DATA.length;i++){ if(DATA[i].unidade===val){ item=DATA[i]; break; } }
+    if(!item){ card.classList.add("hidden"); return; }
 
-function clearFilters() {
-    document.getElementById("filterBU").value = "";
-    document.getElementById("filterUnidade").value = "";
-    populateUnidadeFilter(DATA);
-    renderAll(DATA);
-}
+    document.getElementById("rcUnidade").textContent = item.unidade;
+    document.getElementById("rcCodBU").textContent = "Código: " + item.codigo + (item.bu ? " · " + item.bu : "");
+    document.getElementById("rcStatus").innerHTML = getStatusBadge(item.status);
 
-function renderAll(dataset) {
-    updateStats(dataset);
-    renderTable(dataset);
-}
-
-function updateStats(dataset) {
-    document.getElementById("statTotal").textContent = dataset.length;
-    document.getElementById("statAprovado").textContent = dataset.filter(function(d) { return d.status === "sim"; }).length;
-    document.getElementById("statReprovado").textContent = dataset.filter(function(d) { return d.status === "não"; }).length;
-    document.getElementById("statMenos12").textContent = dataset.filter(function(d) { return d.status === "menos 12 meses"; }).length;
-}
-
-function getStatusBadge(status) {
-    if (status === "sim") return '<span class="badge badge-sim">✅ Atingiu</span>';
-    if (status === "não") return '<span class="badge badge-nao">❌ Não Atingiu</span>';
-    if (status === "menos 12 meses") return '<span class="badge badge-menos12">⏳ Menos 12 meses</span>';
-    return '<span class="badge">—</span>';
-}
-
-function escapeHtml(str) {
-    var div = document.createElement("div");
-    div.textContent = str;
-    return div.innerHTML;
-}
-
-function renderTable(dataset) {
-    var tbody = document.getElementById("tableBody");
-    var empty = document.getElementById("emptyState");
-    var countEl = document.getElementById("resultsCount");
-
-    if (dataset.length === 0) {
-        tbody.innerHTML = "";
-        empty.style.display = "block";
-        countEl.textContent = "0 registros";
-        return;
+    if(/SEM MULTIPLICADOR/i.test(item.multiplicador)){
+        document.getElementById("rcMult").innerHTML = '<span style="color:#999;font-style:italic;">Sem multiplicador designado</span>';
+    } else {
+        document.getElementById("rcMult").innerHTML = '<strong style="color:#7A1315;">' + escapeHtml(item.multiplicador) + '</strong>';
     }
 
-    empty.style.display = "none";
-    countEl.textContent = dataset.length + " registro" + (dataset.length !== 1 ? "s" : "");
+    document.getElementById("rcObs").textContent = item.observacao || "—";
+    card.classList.remove("hidden");
+}
 
-    var html = "";
-    dataset.forEach(function(d) {
-        var multHtml = /SEM MULTIPLICADOR/i.test(d.multiplicador)
-            ? '<span class="sem-mult">Sem multiplicador designado</span>'
-            : '<span class="multiplicador-name">' + escapeHtml(d.multiplicador) + '</span>';
+// 3. ADMIN LOGIN
+function showAdminLogin(){
+    document.getElementById("adminLoginOverlay").classList.remove("hidden");
+    document.getElementById("adminPassword").value = "";
+    document.getElementById("loginError").style.display = "none";
+    document.getElementById("adminPassword").focus();
+}
+function hideAdminLogin(){
+    document.getElementById("adminLoginOverlay").classList.remove("hidden");
+    document.getElementById("adminLoginOverlay").classList.add("hidden");
+}
+function doAdminLogin(){
+    var pwd = document.getElementById("adminPassword").value;
+    if(pwd === ADMIN_PASSWORD){
+        isAdmin = true;
+        hideAdminLogin();
+        enterAdminMode();
+    } else {
+        document.getElementById("loginError").style.display = "block";
+    }
+}
+function logoutAdmin(){
+    isAdmin = false;
+    document.getElementById("adminView").classList.add("hidden");
+    document.getElementById("licenciadoView").classList.remove("hidden");
+    document.getElementById("btnLogout").classList.add("hidden");
+    document.getElementById("btnAdminToggle").classList.remove("hidden");
+}
 
-        html += '<tr>' +
-            '<td><span class="unidade-name">' + escapeHtml(d.unidade) + '</span></td>' +
-            '<td>' + escapeHtml(d.codigo) + '</td>' +
-            '<td>' + (d.bu ? '<span class="bu-tag">' + escapeHtml(d.bu) + '</span>' : '—') + '</td>' +
-            '<td>' + getStatusBadge(d.status) + '</td>' +
-            '<td>' + multHtml + '</td>' +
-            '<td class="obs-text">' + (d.observacao ? escapeHtml(d.observacao) : '—') + '</td>' +
+// 4. ADMIN MODE
+function enterAdminMode(){
+    document.getElementById("licenciadoView").classList.add("hidden");
+    document.getElementById("adminView").classList.remove("hidden");
+    document.getElementById("btnAdminToggle").classList.add("hidden");
+    document.getElementById("btnLogout").classList.remove("hidden");
+    initAdmin();
+}
+function initAdmin(){
+    populateBUFilter();
+    populateUnidadeFilter(DATA);
+    renderAdminAll(DATA);
+    document.getElementById("filterBU").addEventListener("change", adminFilterByBU);
+    document.getElementById("filterUnidade").addEventListener("change", adminFilterResults);
+    document.getElementById("filterStatus").addEventListener("change", adminFilterResults);
+    document.getElementById("btnClear").addEventListener("click", adminClearFilters);
+}
+
+function populateBUFilter(){
+    var bus=[], sel=document.getElementById("filterBU");
+    sel.innerHTML='<option value="">Todas as BUs</option>';
+    DATA.forEach(function(d){ if(d.bu && bus.indexOf(d.bu)===-1) bus.push(d.bu); });
+    bus.sort();
+    bus.forEach(function(b){ var o=document.createElement("option"); o.value=b; o.textContent=b; sel.appendChild(o); });
+}
+function populateUnidadeFilter(ds){
+    var sel=document.getElementById("filterUnidade");
+    sel.innerHTML='<option value="">Todas as unidades</option>';
+    var u=[];
+    ds.forEach(function(d){ if(u.indexOf(d.unidade)===-1) u.push(d.unidade); });
+    u.sort();
+    u.forEach(function(n){ var o=document.createElement("option"); o.value=n; o.textContent=n; sel.appendChild(o); });
+}
+function adminFilterByBU(){
+    document.getElementById("filterUnidade").value="";
+    document.getElementById("filterStatus").value="";
+    var bu=document.getElementById("filterBU").value;
+    var f=DATA;
+    if(bu) f=DATA.filter(function(d){return d.bu===bu;});
+    populateUnidadeFilter(f);
+    renderAdminAll(f);
+}
+function adminFilterResults(){
+    var bu=document.getElementById("filterBU").value;
+    var un=document.getElementById("filterUnidade").value;
+    var st=document.getElementById("filterStatus").value;
+    var f=DATA;
+    if(bu) f=f.filter(function(d){return d.bu===bu;});
+    if(un) f=f.filter(function(d){return d.unidade===un;});
+    if(st) f=f.filter(function(d){return d.status===st;});
+    renderAdminAll(f);
+}
+function adminClearFilters(){
+    document.getElementById("filterBU").value="";
+    document.getElementById("filterUnidade").value="";
+    document.getElementById("filterStatus").value="";
+    populateUnidadeFilter(DATA);
+    renderAdminAll(DATA);
+}
+
+// 5. RENDER ADMIN
+function renderAdminAll(ds){
+    document.getElementById("statTotal").textContent=ds.length;
+    document.getElementById("statAprovado").textContent=ds.filter(function(d){return d.status==="sim";}).length;
+    document.getElementById("statReprovado").textContent=ds.filter(function(d){return d.status==="não";}).length;
+    document.getElementById("statMenos12").textContent=ds.filter(function(d){return d.status==="menos 12 meses";}).length;
+    renderTable(ds);
+}
+function renderTable(ds){
+    var tb=document.getElementById("tableBody"), em=document.getElementById("emptyState"), ct=document.getElementById("resultsCount");
+    if(!ds.length){ tb.innerHTML=""; em.classList.remove("hidden"); ct.textContent="0 registros"; return; }
+    em.classList.add("hidden");
+    ct.textContent=ds.length+" registro"+(ds.length!==1?"s":"");
+    var h="";
+    ds.forEach(function(d){
+        var m=/SEM MULTIPLICADOR/i.test(d.multiplicador)
+            ? '<span style="color:#999;font-style:italic;">Sem multiplicador</span>'
+            : '<strong style="color:#231F20;">'+escapeHtml(d.multiplicador)+'</strong>';
+        h+='<tr>'+
+            '<td><span class="unidade-name">'+escapeHtml(d.unidade)+'</span></td>'+
+            '<td>'+escapeHtml(d.codigo)+'</td>'+
+            '<td>'+(d.bu?'<span class="bu-tag">'+escapeHtml(d.bu)+'</span>':'—')+'</td>'+
+            '<td>'+getStatusBadge(d.status)+'</td>'+
+            '<td>'+m+'</td>'+
+            '<td class="obs-text">'+(d.observacao?escapeHtml(d.observacao):'—')+'</td>'+
         '</tr>';
     });
-    tbody.innerHTML = html;
+    tb.innerHTML=h;
 }
+
+// 6. HELPERS
+function getStatusBadge(s){
+    if(s==="sim") return '<span class="badge badge-sim">✅ Atingiu</span>';
+    if(s==="não") return '<span class="badge badge-nao">❌ Não Atingiu</span>';
+    if(s==="menos 12 meses") return '<span class="badge badge-menos12">⏳ Menos 12 meses</span>';
+    return '<span class="badge">—</span>';
+}
+function escapeHtml(s){ var d=document.createElement("div"); d.textContent=s; return d.innerHTML; }
 </script>
 
 </body>
