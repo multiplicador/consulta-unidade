@@ -270,5 +270,6 @@
   {"unidade":"UMUARAMA - PR","codigo":"E00135","status":"sim","multiplicador":"VANESSA BORGES JARDIM","observacao":"validado em 05/10","bu":"BU3"},
   {"unidade":"VACARIA - RS","codigo":"E00187","status":"não","multiplicador":"SEM MULTIPLICADOR","observacao":"VALIDADO 02.10","bu":"BU4"},
   {"unidade":"VIDEIRA - SC","codigo":"E00154","status":"sim","multiplicador":"FRANCIELE GRANDO","observacao":"validado em 05/10","bu":"BU4"},
-  {"unidade":"VILA VELHA - ES","codigo":"E00172","status":"sim","multiplicador":"CARLOS AUGUSTO MOREIRA MACIEL","observacao":"validado em 05/10","bu":"BU
+  {"unidade":"VILA VELHA - ES","codigo":"E00172","status":"sim","multiplicador":"CARLOS AUGUSTO MOREIRA MACIEL","observacao":"validado em 05/10","bu":"BU"
+  }
     ]
