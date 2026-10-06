@@ -77,7 +77,6 @@
         @keyframes spin { to { transform: rotate(360deg); } }
         .error-msg { text-align: center; padding: 40px 20px; color: var(--accent); font-size: 15px; }
 
-        /* ===== SEARCH SECTION ===== */
         .search-section {
             background: var(--card-bg); border-radius: 20px;
             box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid var(--border);
@@ -107,16 +106,13 @@
             cursor: pointer; transition: background 0.2s; white-space: nowrap;
         }
         .btn-search:hover { background: var(--accent); }
-        .search-hint {
-            font-size: 12px; color: var(--text-muted); margin-top: 12px;
-        }
+        .search-hint { font-size: 12px; color: var(--text-muted); margin-top: 12px; }
         .search-error {
             margin-top: 16px; padding: 14px 20px; background: #FDEAEA;
             border: 1px solid #F5C6C6; border-radius: 12px; color: var(--ademicon-vermelho-medio);
             font-size: 14px; font-weight: 600; display: none;
         }
 
-        /* ===== RESULT CARD ===== */
         .result-card {
             max-width: 700px; margin: 0 auto; background: var(--card-bg);
             border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.08);
@@ -152,7 +148,6 @@
         }
         .btn-new-search:hover { background: var(--bg); border-color: var(--primary); }
 
-        /* ===== PREMISSAS ===== */
         .premissas-card {
             background: var(--card-bg); border-radius: 20px; padding: 0;
             box-shadow: 0 4px 20px rgba(0,0,0,0.07); border: 1px solid var(--border);
@@ -196,7 +191,6 @@
         .avaliacao-box p { font-size: 13px; color: var(--text); line-height: 1.6; }
         .avaliacao-box strong { color: var(--ademicon-vermelho-medio); }
 
-        /* ===== ADMIN ===== */
         .admin-login-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.5); z-index: 200;
@@ -340,7 +334,6 @@
 </head>
 <body>
 
-    <!-- HEADER -->
     <div class="header">
         <div class="header-top">
             <div class="logo-area">
@@ -359,40 +352,31 @@
     </div>
 
     <div class="container">
-
-        <!-- LOADING -->
         <div id="loadingState" class="loading">
             <div class="spinner"></div>
             <p>Carregando dados dos multiplicadores...</p>
         </div>
-
-        <!-- ERROR -->
         <div id="errorState" class="error-msg hidden">
             <p>❌ Erro ao carregar os dados.</p>
             <p>Verifique se o arquivo <strong>dados.json</strong> está na mesma pasta.</p>
         </div>
 
-        <!-- ================================================ -->
-        <!-- TELA DO LICENCIADO                                -->
-        <!-- ================================================ -->
+        <!-- TELA DO LICENCIADO -->
         <div id="licenciadoView" class="hidden">
-
-            <!-- 1. BUSCA POR CÓDIGO -->
             <div class="search-section" id="searchSection">
                 <h2>🔍 Consulte sua Unidade</h2>
                 <p>Digite o código da sua unidade para verificar o status no critério Multiplicadores.</p>
                 <div class="search-input-row">
-                    <input type="text" id="inputCodigo" placeholder="Ex: E00012" maxlength="10"
+                    <input type="text" id="inputCodigo" placeholder="Ex: E0107 ou E00012" maxlength="10"
                            onkeydown="if(event.key==='Enter')searchByCodigo()">
                     <button class="btn-search" onclick="searchByCodigo()">Consultar</button>
                 </div>
-                <div class="search-hint">O código da unidade é fornecido pela Ademicon (ex: E00012, P00013, D00093)</div>
+                <div class="search-hint">O código da unidade é fornecido pela Ademicon (ex: E0107, E00012, P00013, D00093)</div>
                 <div class="search-error" id="searchError">
                     ❌ Código não encontrado. Verifique se digitou corretamente.
                 </div>
             </div>
 
-            <!-- 2. CARD RESULTADO -->
             <div id="resultCard" class="result-card hidden">
                 <div class="result-card-header">
                     <h3 id="rcUnidade">—</h3>
@@ -419,7 +403,6 @@
             </div>
             <button class="btn-new-search hidden" id="btnNewSearch" onclick="resetSearch()">← Consultar outra unidade</button>
 
-            <!-- 3. PREMISSAS -->
             <div class="premissas-card">
                 <div class="premissas-header">
                     <h2>📋 Premissas 360° — Treinamento e Desenvolvimento — Multiplicadores</h2>
@@ -454,12 +437,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
 
-        <!-- ================================================ -->
-        <!-- TELA DO ADMINISTRADOR                             -->
-        <!-- ================================================ -->
+        <!-- TELA DO ADMINISTRADOR -->
         <div id="adminView" class="hidden">
             <div class="filter-section">
                 <h2>🔍 Painel do Administrador — Visão Geral</h2>
@@ -506,10 +486,8 @@
                 </div>
             </div>
         </div>
-
     </div>
 
-    <!-- LOGIN OVERLAY -->
     <div id="adminLoginOverlay" class="admin-login-overlay hidden">
         <div class="admin-login-box">
             <div class="icon">🔒</div>
@@ -522,7 +500,6 @@
         </div>
     </div>
 
-    <!-- FOOTER -->
     <div class="footer">
         <p><strong>Ademicon</strong> — Avaliação 360° | Treinamento e Desenvolvimento — Multiplicadores</p>
         <p>3º Trimestre de 2026 · Dados atualizados em Outubro/2026</p>
@@ -532,6 +509,27 @@
 var ADMIN_PASSWORD = "ademicon360";
 var DATA = [];
 var isAdmin = false;
+
+/* ==============================================
+   FUNÇÃO DE NORMALIZAÇÃO DE CÓDIGO
+   Converte qualquer formato para padrão único:
+   E0107  → E00107
+   E00107 → E00107
+   P0013  → P00013
+   P00013 → P00013
+   Regra: letra(s) + número com 5 dígitos (zeros à esquerda)
+   ============================================== */
+function normalizeCodigo(code) {
+    code = code.trim().toUpperCase();
+    var match = code.match(/^([A-Z]+)(\d+)$/);
+    if (match) {
+        var prefix = match[1];
+        var num = match[2];
+        while (num.length < 5) num = '0' + num;
+        return prefix + num;
+    }
+    return code;
+}
 
 fetch("dados.json")
     .then(function(r){ if(!r.ok) throw new Error("Erro"); return r.json(); })
@@ -550,7 +548,7 @@ function showLicenciadoView(){
     document.getElementById("adminView").classList.add("hidden");
 }
 
-/* ===== LICENCIADO — BUSCA POR CÓDIGO ===== */
+/* ===== BUSCA POR CÓDIGO COM NORMALIZAÇÃO ===== */
 function searchByCodigo(){
     var raw = document.getElementById("inputCodigo").value.trim().toUpperCase();
     var errEl = document.getElementById("searchError");
@@ -563,9 +561,10 @@ function searchByCodigo(){
 
     if(!raw){ return; }
 
+    var normalizado = normalizeCodigo(raw);
     var item = null;
     for(var i = 0; i < DATA.length; i++){
-        if(DATA[i].codigo.toUpperCase() === raw){
+        if(normalizeCodigo(DATA[i].codigo) === normalizado){
             item = DATA[i]; break;
         }
     }
@@ -594,7 +593,6 @@ function searchByCodigo(){
         document.getElementById("rcMult").innerHTML = '<strong style="color:#7A1315;">' + escapeHtml(item.multiplicador) + '</strong>';
     }
     document.getElementById("rcObs").textContent = item.observacao || "—";
-
     cardEl.classList.remove("hidden");
     btnNew.classList.remove("hidden");
     cardEl.scrollIntoView({ behavior: "smooth", block: "start" });
